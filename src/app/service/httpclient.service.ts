@@ -17,13 +17,6 @@ export class User{
 export class HttpClientService {
 
   constructor(private httpClient:HttpClient) { }
-  
-  
-  showUserCreatedPage()
-  {
-    console.log("test call");
-    return this.httpClient.get<String>('http://localhost:8080/VinylStore/api/userCreated');
-  }
 
   public createUser(user)
   {
