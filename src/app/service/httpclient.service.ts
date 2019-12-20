@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 export class User{
   constructor(
@@ -20,6 +22,11 @@ export class HttpClientService {
 
   public createUser(user)
   {
-    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' ,user);
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' ,user).pipe(catchError(this.handleError));
   }
+
+  handleError(error: HttpErrorResponse){
+    alert("Email already in use!");
+    return throwError(error);
+    }
 }

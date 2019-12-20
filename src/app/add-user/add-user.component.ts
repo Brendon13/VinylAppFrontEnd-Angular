@@ -31,7 +31,7 @@ export class AddUserComponent implements OnInit {
     this.httpClientService.createUser(this.user)
         .subscribe( data => {
           alert("User created successfully.");
-        });
+        }); 
   };
 
    // convenience getter for easy access to form fields
@@ -47,13 +47,7 @@ export class AddUserComponent implements OnInit {
        }
 
        this.createUser();
-
-       if(this.errorMessage = "Email already in use!")
-       {
-          alert("Email already in use!");
-          return;
-       }
-       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+       
    }
 
 }
