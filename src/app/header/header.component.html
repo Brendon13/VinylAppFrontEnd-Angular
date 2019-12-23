@@ -3,8 +3,9 @@
     <div><a class="navbar-brand">VinylStore</a></div>
     
     <ul class="navbar-nav">
-      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/addUser" class="nav-link">Create User</a></li>
+      <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/addUser" class="nav-link">Sign Up</a></li>
       <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+      <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/getVinyls" class="nav-link">Vinyls</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
     </ul>
     

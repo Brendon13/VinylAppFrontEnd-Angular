@@ -13,6 +13,16 @@ export class User{
   
 }
 
+export class Item{
+  constructor(
+    public id:number,
+    public name:string,
+    public description:string,
+    public price:number,
+    public quantity:number,
+  ){}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +33,11 @@ export class HttpClientService {
   public createUser(user)
   {
     return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' ,user).pipe(catchError(this.handleError));
+  }
+
+  public getVinyls()
+  {
+    return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls').pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse){

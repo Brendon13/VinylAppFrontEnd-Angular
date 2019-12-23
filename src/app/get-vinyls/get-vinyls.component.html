@@ -1,0 +1,20 @@
+  <table border="1">
+    <thead></thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>description</th>
+      <th>price</th>
+      <th>quantity</th>
+      </tr>
+    
+    <tbody>
+        <tr *ngFor="let vinyl of data">
+            <td>{{vinyl.id}}</td>
+            <td>{{vinyl.name}}</td>
+            <td>{{vinyl.description}}</td>
+            <td>{{vinyl.price}}</td>
+            <td>{{vinyl.quantity}}</td>
+            </tr>
+    </tbody>
+      </table>

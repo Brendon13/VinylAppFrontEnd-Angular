@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BasicAuthHttpInterceptorService } from './service/basic-auth-http-interceptor.service';
+import { GetVinylsComponent } from './get-vinyls/get-vinyls.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BasicAuthHttpInterceptorService } from './service/basic-auth-http-inter
     FooterComponent,
     LoginComponent,
     LogoutComponent,
+    GetVinylsComponent,
   ],
   imports: [
     BrowserModule,
