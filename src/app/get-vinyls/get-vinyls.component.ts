@@ -8,8 +8,9 @@ declare var $;
   styleUrls: ['./get-vinyls.component.css']
 })
 export class GetVinylsComponent implements OnInit {
+
   data:Item[];
-  
+
   @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
 
@@ -21,6 +22,7 @@ export class GetVinylsComponent implements OnInit {
 
     this.dataTable = $(this.itemTable.nativeElement);
     this.dataTable.DataTable();
+    
   }
 
 }

@@ -37,11 +37,21 @@ export class HttpClientService {
 
   public getVinyls()
   {
-    return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls');
+    return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls').pipe(catchError(this.handleError));
   }
 
-  handleError(error: HttpErrorResponse){
-    alert("Email already in use!");
+  public deleteUser(userId)
+  {
+    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/' + userId).pipe(catchError(this.handleError));
+  }
+
+  handleError(error: HttpErrorResponse)
+  {
+    let splitted = JSON.stringify(error.error).split(":");
+    let splitted2 = splitted[splitted.length-1];
+    let errorMessage = splitted2.substr(1, splitted2.length-3);
+    console.log(errorMessage);
+    alert(errorMessage);
     return throwError(error);
-    }
+  }
 }

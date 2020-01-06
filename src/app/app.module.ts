@@ -14,6 +14,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { BasicAuthHttpInterceptorService } from './service/basic-auth-http-interceptor.service';
 import { GetVinylsComponent } from './get-vinyls/get-vinyls.component';
 import { DataTablesModule } from 'angular-datatables';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DataTablesModule } from 'angular-datatables';
     LoginComponent,
     LogoutComponent,
     GetVinylsComponent,
+    DeleteUserComponent,
   ],
   imports: [
     BrowserModule,
