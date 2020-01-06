@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 export class User{
@@ -37,7 +37,7 @@ export class HttpClientService {
 
   public getVinyls()
   {
-    return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls').pipe(catchError(this.handleError));
+    return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls');
   }
 
   handleError(error: HttpErrorResponse){

@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
 
 export class JwtResponse{
   constructor(
@@ -30,16 +29,9 @@ export class AuthenticationService {
           //console.log(userData);
           return userData;
          }
-       ),
-       catchError(this.handleError)
+       )
       );
     }
-  
-
-    handleError(error: HttpErrorResponse){
-      alert("Email already in use!");
-      return throwError(error);
-      }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('username')

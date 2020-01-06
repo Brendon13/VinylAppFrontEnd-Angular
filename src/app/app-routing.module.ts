@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
   { path: 'getVinyls', component: GetVinylsComponent, canActivate:[AuthGuardService] },
+  //{ path: '',  redirectTo: '/login',  pathMatch: 'full'}
 ];
 
 @NgModule({
