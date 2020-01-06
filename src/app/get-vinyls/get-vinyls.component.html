@@ -1,24 +1,24 @@
 <div class="jumbotron">
   <div class="container">  
-    <table datatable class="row-border hover">
-      <thead></thead>
+    <table datatable id="itemTable" class="row-border hover">
+      <thead>
       <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>description</th>
-        <th>price</th>
-        <th>quantity</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
         </tr>
-      
+      </thead>
       <tbody>
           <tr *ngFor="let Vinyls of data">
-              <td>{{Vinyls.Id | json}}</td>
+              <td>{{Vinyls.Id}}</td>
               <td>{{Vinyls.Name}}</td>
               <td>{{Vinyls.Description}}</td>
               <td>{{Vinyls.Price}}</td>
               <td>{{Vinyls.Quantity}}</td>
-              </tr>
+          </tr>
       </tbody>
-    </tabledatatable class="row-border hover">
+    </table>
   </div>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClientService, Item } from '../service/httpclient.service';
+declare var $;
 
 @Component({
   selector: 'app-get-vinyls',
@@ -8,20 +9,18 @@ import { HttpClientService, Item } from '../service/httpclient.service';
 })
 export class GetVinylsComponent implements OnInit {
   data:Item[];
+  
+  @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
+  dataTable: any;
 
   constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
-    this.httpClientService.getVinyls()
-    .subscribe( response =>this.handleSuccessfulResponse(response)
-    );
+ 
+    this.httpClientService.getVinyls().subscribe( response => this.data=response);
+
+    this.dataTable = $(this.itemTable.nativeElement);
+    this.dataTable.DataTable();
   }
-
-  handleSuccessfulResponse(response)
-{
-    this.data=response;
-    console.log(this.data);
-}
-
 
 }
