@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, User } from '../service/httpclient.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -12,7 +13,7 @@ export class AddUserComponent implements OnInit {
   user: User = new User("","","","");
   errorMessage: String;
 
-  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder) { }
+  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -31,6 +32,7 @@ export class AddUserComponent implements OnInit {
     this.httpClientService.createUser(this.user)
         .subscribe( data => {
           alert("User created successfully.");
+          this.router.navigate(['/login']);
         }); 
   };
 
@@ -44,6 +46,7 @@ export class AddUserComponent implements OnInit {
        }
 
        this.createUser();
+       
        
    }
 

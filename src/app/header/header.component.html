@@ -5,6 +5,7 @@
     <ul class="navbar-nav">
       <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/addUser" class="nav-link">Sign Up</a></li>
       <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+      <li><a *ngIf="loginService.isUserManager()" routerLink="/addManager" class="nav-link">Add Manager</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/getVinyls" class="nav-link">Vinyls</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/deleteUser" class="nav-link">Delete User</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Log Out</a></li>

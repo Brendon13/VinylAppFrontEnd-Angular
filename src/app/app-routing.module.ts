@@ -6,13 +6,18 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { GetVinylsComponent } from './get-vinyls/get-vinyls.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { AddManagerComponent } from './add-manager/add-manager.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { AuthManagerService } from './service/auth-manager.service';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent, canActivate:[AuthGuardService] },
   { path: 'getVinyls', component: GetVinylsComponent, canActivate:[AuthGuardService] },
-  { path: 'deleteUser', component: DeleteUserComponent, canActivate:[AuthGuardService] }
+  { path: 'deleteUser', component: DeleteUserComponent, canActivate:[AuthGuardService] },
+  { path: 'addManager', component: AddManagerComponent, canActivate:[AuthManagerService] },
+  { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] }
 ];
 
 @NgModule({

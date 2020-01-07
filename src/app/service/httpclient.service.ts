@@ -45,6 +45,11 @@ export class HttpClientService {
     return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/' + userId).pipe(catchError(this.handleError));
   }
 
+  public createManager(user)
+  {
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/managers' ,user).pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse)
   {
     let splitted = JSON.stringify(error.error).split(":");

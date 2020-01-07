@@ -24,6 +24,7 @@ export class DeleteUserComponent implements OnInit {
 
   deleteUser(): void {
     this.httpClientService.deleteUser(this.deleteForm.controls['ID'].value).subscribe( data => {
+      alert("User deleted successfully.");
       this.router.navigate(['/logout'])
       this.invalidDeletion = false
     },

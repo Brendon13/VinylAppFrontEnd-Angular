@@ -15,6 +15,8 @@ import { BasicAuthHttpInterceptorService } from './service/basic-auth-http-inter
 import { GetVinylsComponent } from './get-vinyls/get-vinyls.component';
 import { DataTablesModule } from 'angular-datatables';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { AddManagerComponent } from './add-manager/add-manager.component';
+import { VerifyUserComponent } from './verify-user/verify-user.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
     LogoutComponent,
     GetVinylsComponent,
     DeleteUserComponent,
+    AddManagerComponent,
+    VerifyUserComponent,
   ],
   imports: [
     BrowserModule,
