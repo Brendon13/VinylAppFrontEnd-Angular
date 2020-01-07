@@ -12,7 +12,7 @@ export class DeleteUserComponent implements OnInit {
   deleteForm: FormGroup;
   submitted = false;
   data:any;
-  invalidDeletion = false
+  invalidDeletion = false;
 
   constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -25,11 +25,11 @@ export class DeleteUserComponent implements OnInit {
   deleteUser(): void {
     this.httpClientService.deleteUser(this.deleteForm.controls['ID'].value).subscribe( data => {
       alert("User deleted successfully.");
-      this.router.navigate(['/logout'])
-      this.invalidDeletion = false
+      this.router.navigate(['/logout']);
+      this.invalidDeletion = false;
     },
     error => {
-      this.invalidDeletion = true
+      this.invalidDeletion = true;
     }
   );
   }

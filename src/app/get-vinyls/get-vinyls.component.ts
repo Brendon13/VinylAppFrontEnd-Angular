@@ -11,6 +11,10 @@ export class GetVinylsComponent implements OnInit {
 
   data:Item[];
 
+  message = '';
+  dtOptions: DataTables.Settings = {};
+
+
   @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
 
@@ -22,7 +26,7 @@ export class GetVinylsComponent implements OnInit {
 
     this.dataTable = $(this.itemTable.nativeElement);
     this.dataTable.DataTable();
-    
+
   }
 
 }

@@ -17,6 +17,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
     DeleteUserComponent,
     AddManagerComponent,
     VerifyUserComponent,
+    AddToCartComponent,
   ],
   imports: [
     BrowserModule,

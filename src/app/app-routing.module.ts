@@ -9,6 +9,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AuthManagerService } from './service/auth-manager.service';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'getVinyls', component: GetVinylsComponent, canActivate:[AuthGuardService] },
   { path: 'deleteUser', component: DeleteUserComponent, canActivate:[AuthGuardService] },
   { path: 'addManager', component: AddManagerComponent, canActivate:[AuthManagerService] },
-  { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] }
+  { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] },
+  { path: 'addToCart', component: AddToCartComponent, canActivate:[AuthGuardService] }
 ];
 
 @NgModule({

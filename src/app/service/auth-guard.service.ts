@@ -18,13 +18,4 @@ export class AuthGuardService implements CanActivate {
     return false;
 
   }
-
-  canActivateManager(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isUserManager())
-      return true;
-
-    this.router.navigate(['']);
-    return false;
-
-  }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -32,7 +32,7 @@ export class HttpClientService {
 
   public createUser(user)
   {
-    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' ,user).pipe(catchError(this.handleError));
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' , user).pipe(catchError(this.handleError));
   }
 
   public getVinyls()
@@ -47,7 +47,13 @@ export class HttpClientService {
 
   public createManager(user)
   {
-    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/managers' ,user).pipe(catchError(this.handleError));
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/managers' , user).pipe(catchError(this.handleError));
+  }
+
+  public addToCart(itemId, quantity)
+  {
+    let httpParams = new HttpParams().set('quantity', quantity);
+    return this.httpClient.post('http://localhost:8080/VinylStore/api/vinyls/cart/' + itemId , {params:httpParams}).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse)
