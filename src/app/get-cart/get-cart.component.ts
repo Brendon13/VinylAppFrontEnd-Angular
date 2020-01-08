@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { HttpClientService, Cart, ItemWithOutId } from '../service/httpclient.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClientService } from '../service/httpclient.service';
 
 @Component({
   selector: 'app-get-cart',
@@ -18,7 +17,7 @@ export class GetCartComponent implements OnInit {
   @ViewChild('cartTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
 
-  constructor(private httpClientService: HttpClientService, private httpClient:HttpClient) { }
+  constructor(private httpClientService: HttpClientService) { }
 
   ngOnInit() {
     this.httpClientService.getCart().subscribe( response =>{ 

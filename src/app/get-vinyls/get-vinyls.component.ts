@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { HttpClientService, Item } from '../service/httpclient.service';
+import { HttpClientService, Item, CartItemDTO } from '../service/httpclient.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 declare var $;
 
 @Component({
@@ -15,17 +16,52 @@ export class GetVinylsComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
 
+  addToCartForm: FormGroup;
+  submitted = false;
+  invalidSelection = false;
+  cartItemDTO: CartItemDTO = new CartItemDTO(0);
+
   @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
 
-  constructor(private httpClientService: HttpClientService) { }
+  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
  
+    this.addToCartForm = this.formBuilder.group({
+      ID: ['', [Validators.required]],
+      quantity: ['', [Validators.required]],});
+
     this.httpClientService.getVinyls().subscribe( response => this.data=response);
     this.dataTable = $(this.itemTable.nativeElement);
     this.dataTable.DataTable();
 
   }
+
+
+  addToCart(): void {
+    this.cartItemDTO.quantity = this.addToCartForm.controls['quantity'].value;
+    this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.cartItemDTO).subscribe( data => {
+      alert("Item added to cart successfully.");
+      this.invalidSelection = false;
+    },
+    error => {
+      this.invalidSelection = true;
+    }
+  );
+  }
+
+  get f() { return this.addToCartForm.controls; }
+
+   onSubmit() {
+       this.submitted = true;
+
+       if (this.addToCartForm.invalid) {
+           return;
+       }
+
+       this.addToCart();
+       
+   }
 
 }

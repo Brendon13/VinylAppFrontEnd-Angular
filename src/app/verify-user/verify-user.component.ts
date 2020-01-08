@@ -20,7 +20,7 @@ export class VerifyUserComponent implements OnInit {
   checkManager(){
     (this.loginservice.verifyUser().subscribe(
       data => {
-        this.router.navigate(['']);
+        this.router.navigate(['/getVinyls']);
         this.invalidManager = false;
       },
       error => {
