@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClientService, Item, CartItemDTO } from '../service/httpclient.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 declare var $;
 
 @Component({
@@ -24,7 +25,7 @@ export class GetVinylsComponent implements OnInit {
   @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
 
-  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder) { }
+  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
  
@@ -43,6 +44,7 @@ export class GetVinylsComponent implements OnInit {
     this.cartItemDTO.quantity = this.addToCartForm.controls['quantity'].value;
     this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.cartItemDTO).subscribe( data => {
       alert("Item added to cart successfully.");
+      this.router.navigate(['/getCart']);
       this.invalidSelection = false;
     },
     error => {

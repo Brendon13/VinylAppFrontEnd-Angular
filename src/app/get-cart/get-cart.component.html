@@ -21,31 +21,56 @@
             </tfoot>
           </table>
         <br><br>
-       <table datatable class="row-border hover">
+       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
          <thead>
          <tr>
+           <th>Name</th>
            <th>Description</th>
            <th>Price</th>
            <th>Quantity</th>
-           <th>Name</th>
          </tr>
          </thead>
         <tbody>
             <tr *ngFor="let Items of data">
+                <td>{{Items.Name}}</td>
                 <td>{{Items.Description}}</td>
                 <td>{{Items.Price}}</td>
                 <td>{{Items.Quantity}}</td>
-                <td>{{Items.Name}}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
+                <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Name</th>
             </tr>
         </tfoot>
       </table>
+      
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Delete Item</h3>
+            <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input type="number" formControlName="UserId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.UserId.errors }" />
+                    <div *ngIf="submitted && f.UserId.errors" class="invalid-feedback">
+                        <div *ngIf="f.UserId.errors.required">User ID is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Item ID</label>
+                    <input type="number" formControlName="ItemId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemId.errors }" />
+                    <div *ngIf="submitted && f.ItemId.errors" class="invalid-feedback">
+                        <div *ngIf="f.ItemId.errors.required">Item ID is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
     </div>
   </div>
