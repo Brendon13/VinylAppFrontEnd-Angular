@@ -8,24 +8,20 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./get-cart.component.css']
 })
 export class GetCartComponent implements OnInit {
-  // ItemsInCart: ItemWithOutId[];
-  // cart: Cart;
-  //res: Cart;
-   message = '';
-   dtOptions: DataTables.Settings = {};
+  message = '';
+  dtOptions: DataTables.Settings = {};
 
-   data:any;
-   totalPrice: any = 0;
-   numberOfItems: any = 0;
+  data:any;
+  totalPrice: any = 0;
+  numberOfItems: any = 0;
 
-   @ViewChild('cartTable', {static: true}) itemTable: ElementRef;
-   dataTable: any;
+  @ViewChild('cartTable', {static: true}) itemTable: ElementRef;
+  dataTable: any;
 
   constructor(private httpClientService: HttpClientService, private httpClient:HttpClient) { }
 
   ngOnInit() {
     this.httpClientService.getCart().subscribe( response =>{ 
-      //let res = response[0];
       this.data=response;
       for(var i=0; i< this.data.length; i++)
       {
@@ -33,35 +29,16 @@ export class GetCartComponent implements OnInit {
       this.totalPrice += this.data[i].Price;
       }
     });
+
+    this.dtOptions = {
+      "paging":   false,
+      "ordering": false,
+      "info":     false,
+      "searching": false
+    };
     
-    // this.httpClient.get('http://localhost:8080/VinylStore/api/customer/cart/detail').subscribe(
-    //   data => {
-    //    this.data = data[0];
-    //    this.ItemsInCart = this.data['ItemsInCart'];
-    //    console.log(this.ItemsInCart);
-    //   }
-      
-    // );
-      // this.res = data[0];  
-      // console.log(this.res['ItemsInCart']);
-      //  this.ItemsInCart = data[0]['ItemsInCart'];
-      //  console.log(this.ItemsInCart);
-
-      //  console.log(this.ItemsInCart[0]['Description']); 
-      //  console.log(this.ItemsInCart[0]['Price']);
-      //  console.log(this.ItemsInCart[0]['Quantity']);
-      //  console.log(this.ItemsInCart[0]['Name']);
-
-      //  console.log(this.ItemsInCart[1]['Description']); 
-      //  console.log(this.ItemsInCart[1]['Price']);
-      //  console.log(this.ItemsInCart[1]['Quantity']);
-      //  console.log(this.ItemsInCart[1]['Name']);
-      //  }
-      // (err: HttpErrorResponse) => {
-      //  console.log (err.message);
-      // }
-     this.dataTable = $(this.itemTable.nativeElement);
-     this.dataTable.DataTable();
+    this.dataTable = $(this.itemTable.nativeElement);
+    this.dataTable.DataTable();
 
   }
 
