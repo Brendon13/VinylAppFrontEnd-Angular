@@ -23,6 +23,12 @@ export class Item{
   ){}
 }
 
+export class CartItemDTO{
+  constructor(
+    public quantity:number
+  ){}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -50,10 +56,9 @@ export class HttpClientService {
     return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/managers' , user).pipe(catchError(this.handleError));
   }
 
-  public addToCart(itemId, quantity)
+  public addToCart(itemId, cartItemDTO)
   {
-    let httpParams = new HttpParams().set('quantity', quantity);
-    return this.httpClient.post('http://localhost:8080/VinylStore/api/vinyls/cart/' + itemId , {params:httpParams}).pipe(catchError(this.handleError));
+    return this.httpClient.post<CartItemDTO>('http://localhost:8080/VinylStore/api/vinyls/cart/' + itemId, cartItemDTO).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse)

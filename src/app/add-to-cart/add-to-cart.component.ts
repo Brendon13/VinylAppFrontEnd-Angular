@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClientService } from '../service/httpclient.service';
+import { HttpClientService, CartItemDTO } from '../service/httpclient.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,7 @@ export class AddToCartComponent implements OnInit {
   submitted = false;
   data:any;
   invalidSelection = false;
+  cartItemDTO: CartItemDTO = new CartItemDTO(0);
 
   constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -23,7 +24,8 @@ export class AddToCartComponent implements OnInit {
   }
 
   addToCart(): void {
-    this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.addToCartForm.controls['quantity'].value).subscribe( data => {
+    this.cartItemDTO.quantity = this.addToCartForm.controls['quantity'].value;
+    this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.cartItemDTO).subscribe( data => {
       alert("Item added to cart successfully.");
       this.router.navigate(['/getVinyls']);
       this.invalidSelection = false;
