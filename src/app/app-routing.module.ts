@@ -10,6 +10,7 @@ import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AuthManagerService } from './service/auth-manager.service';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
+import { GetCartComponent } from './get-cart/get-cart.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'deleteUser', component: DeleteUserComponent, canActivate:[AuthGuardService] },
   { path: 'addManager', component: AddManagerComponent, canActivate:[AuthManagerService] },
   { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] },
-  { path: 'addToCart', component: AddToCartComponent, canActivate:[AuthGuardService] }
+  { path: 'addToCart', component: AddToCartComponent, canActivate:[AuthGuardService] },
+  { path: 'getCart', component: GetCartComponent, canActivate:[AuthGuardService] }
 ];
 
 @NgModule({

@@ -23,7 +23,6 @@ export class GetVinylsComponent implements OnInit {
   ngOnInit() {
  
     this.httpClientService.getVinyls().subscribe( response => this.data=response);
-
     this.dataTable = $(this.itemTable.nativeElement);
     this.dataTable.DataTable();
 

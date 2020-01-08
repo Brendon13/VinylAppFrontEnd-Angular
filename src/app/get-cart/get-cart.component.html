@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <div class="container"> 
+      <table datatable class="row-border hover">
+        <thead>
+        <tr>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Items of data">
+                <td>{{Items.Description}}</td>
+                <td>{{Items.Price}}</td>
+                <td>{{Items.Quantity}}</td>
+                <td>{{Items.Name}}</td>
+            </tr>
+        </tbody>
+      </table>
+      <table datatable class="row-border hover">
+        <thead>
+        <tr>
+          <th>Number of Items</th>
+          <th>Total cost</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{numberOfItems}}</td>
+                <td>{{totalPrice}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -23,9 +23,27 @@ export class Item{
   ){}
 }
 
+export class ItemWithOutId{
+  constructor(
+    public id:number,
+    public name:string,
+    public description:string,
+    public price:number,
+    public quantity:number,
+  ){}
+}
+
 export class CartItemDTO{
   constructor(
     public quantity:number
+  ){}
+}
+
+export class Cart{
+  constructor(
+    public NumberOfItems:number,
+    public ItemsInCart:ItemWithOutId[],
+    public TotalCost:number 
   ){}
 }
 
@@ -59,6 +77,10 @@ export class HttpClientService {
   public addToCart(itemId, cartItemDTO)
   {
     return this.httpClient.post<CartItemDTO>('http://localhost:8080/VinylStore/api/vinyls/cart/' + itemId, cartItemDTO).pipe(catchError(this.handleError));
+  }
+
+  public getCart(){
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/customer/cart/detail').pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse)
