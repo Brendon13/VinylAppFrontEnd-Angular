@@ -18,6 +18,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { GetCartComponent } from './get-cart/get-cart.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { GetCartComponent } from './get-cart/get-cart.component';
     AddManagerComponent,
     VerifyUserComponent,
     GetCartComponent,
+    UserOrdersComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+<div class="jumbotron">
+    <div class="container"> 
+      <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Orders of data">
+                <td>{{Orders.Id}}</td>
+                <td>{{Orders.OrderDate}}</td>
+                <td>{{Orders.Status}}</td>
+                <td>{{Orders.Cost}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Cost</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+</div>

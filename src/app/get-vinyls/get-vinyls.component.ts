@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { HttpClientService, Item, CartItemDTO } from '../service/httpclient.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 declare var $;
 
 @Component({
@@ -9,21 +10,18 @@ declare var $;
   templateUrl: './get-vinyls.component.html',
   styleUrls: ['./get-vinyls.component.css']
 })
-export class GetVinylsComponent implements OnInit {
+export class GetVinylsComponent implements OnInit, OnDestroy {
 
   data:Item[];
 
   message = '';
   dtOptions: DataTables.Settings = {};
-
+  dtTrigger: Subject<unknown> = new Subject();
 
   addToCartForm: FormGroup;
   submitted = false;
   invalidSelection = false;
   cartItemDTO: CartItemDTO = new CartItemDTO(0);
-
-  @ViewChild('itemTable', {static: true}) itemTable: ElementRef;
-  dataTable: any;
 
   constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -33,10 +31,15 @@ export class GetVinylsComponent implements OnInit {
       ID: ['', [Validators.required]],
       quantity: ['', [Validators.required]],});
 
-    this.httpClientService.getVinyls().subscribe( response => this.data=response);
-    this.dataTable = $(this.itemTable.nativeElement);
-    this.dataTable.DataTable();
+    this.httpClientService.getVinyls().subscribe( response => {
+      this.data=response
+      this.dtTrigger.next();
+    });
 
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
 

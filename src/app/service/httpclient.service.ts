@@ -78,12 +78,16 @@ export class HttpClientService {
     return this.httpClient.get('http://localhost:8080/VinylStore/api/customer/cart/detail').pipe(catchError(this.handleError));
   }
 
-  public deleteItem(userId, itemId){
-    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/' + userId + '/cart/' + itemId).pipe(catchError(this.handleError));
+  public deleteItem(itemId){
+    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/cart/' + itemId).pipe(catchError(this.handleError));
   }
 
-  public placeOrder(userId){
-    return this.httpClient.put('http://localhost:8080/VinylStore/api/' + userId +  '/orders', null).pipe(catchError(this.handleError));
+  public placeOrder(){
+    return this.httpClient.put('http://localhost:8080/VinylStore/api/orders', null).pipe(catchError(this.handleError));
+  }
+
+  public getUserOrder(){
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/users/orders').pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse)
