@@ -46,7 +46,7 @@ export class GetVinylsComponent implements OnInit, OnDestroy {
   addToCart(): void {
     this.cartItemDTO.quantity = this.addToCartForm.controls['quantity'].value;
     this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.cartItemDTO).subscribe( data => {
-      alert("Item added to cart successfully.");
+      alert("Item added/updated to cart successfully.");
       this.router.navigate(['/getCart']);
       this.invalidSelection = false;
     },

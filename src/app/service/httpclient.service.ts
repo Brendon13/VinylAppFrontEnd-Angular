@@ -62,8 +62,8 @@ export class HttpClientService {
     return this.httpClient.get<Item[]>('http://localhost:8080/VinylStore/api/vinyls').pipe(catchError(this.handleError));
   }
 
-  public deleteUser(userId){
-    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/' + userId).pipe(catchError(this.handleError));
+  public deleteUser(){
+    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/delete').pipe(catchError(this.handleError));
   }
 
   public createManager(user){

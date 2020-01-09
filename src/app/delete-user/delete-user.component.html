@@ -3,14 +3,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <h3>Vinyl Store User Deletion</h3>
-                <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label>User ID</label>
-                        <input type="number" formControlName="ID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ID.errors }" />
-                        <div *ngIf="submitted && f.ID.errors" class="invalid-feedback">
-                            <div *ngIf="f.ID.errors.required">ID is required</div>
-                        </div>
-                    </div>
+                <form (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <button class="btn btn-primary">Delete</button>
                     </div>

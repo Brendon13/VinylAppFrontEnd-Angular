@@ -1,16 +1,5 @@
 <div class="jumbotron">
-    <div class="container"> 
-        <!-- <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h3>Place Order</h3>
-                <form [formGroup]="deleteForm" (ngSubmit)="onSubmit1()">
-                    <div class="form-group">
-                        <button class="btn btn-primary">Place Order</button>
-                    </div>
-                </form>
-            </div>
-        </div> -->
-
+    <div class="container">
         <table datatable [dtTrigger]="dtTrigger" [dtOptions]="dtOptions" class="row-border hover">
             <thead>
             <tr>
@@ -46,6 +35,7 @@
        <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
          <thead>
          <tr>
+           <th>ID</th>
            <th>Name</th>
            <th>Description</th>
            <th>Price</th>
@@ -54,6 +44,7 @@
          </thead>
         <tbody>
             <tr *ngFor="let Items of data">
+                <td>{{Items.Id}}</td>
                 <td>{{Items.Name}}</td>
                 <td>{{Items.Description}}</td>
                 <td>{{Items.Price}}</td>
@@ -62,6 +53,7 @@
         </tbody>
         <tfoot>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>

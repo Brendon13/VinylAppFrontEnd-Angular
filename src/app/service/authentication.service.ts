@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
 
 export class JwtResponse{
   constructor(
@@ -25,7 +26,8 @@ export class AuthenticationService {
           sessionStorage.setItem('token', tokenStr);
           return userData;
          }
-       )
+       ),
+       catchError(this.handleError)
       );
     }
 
@@ -39,6 +41,16 @@ export class AuthenticationService {
         }
       )
     )
+  }
+
+  handleError(error: HttpErrorResponse)
+  {
+    let splitted = JSON.stringify(error.error).split(":");
+    let splitted2 = splitted[splitted.length-1];
+    let errorMessage = splitted2.substr(1, splitted2.length-3);
+    console.log(errorMessage);
+    alert(errorMessage);
+    return throwError(error);
   }
   
   isUserLoggedIn() {
