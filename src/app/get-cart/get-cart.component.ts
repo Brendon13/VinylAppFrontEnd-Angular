@@ -15,10 +15,13 @@ export class GetCartComponent implements OnInit {
   data:any;
   totalPrice: any = 0;
   numberOfItems: any = 0;
+  totalQuantity: any = 0;
 
   deleteForm: FormGroup;
+  placeOrderForm: FormGroup;
   submitted = false;
   invalidDeletion = false;
+  invalidOrder = false;
 
   @ViewChild('cartTable', {static: true}) itemTable: ElementRef;
   dataTable: any;
@@ -30,12 +33,17 @@ export class GetCartComponent implements OnInit {
       UserId: ['', [Validators.required]],
       ItemId: ['', [Validators.required]]});
 
+    this.placeOrderForm = this.formBuilder.group({
+      UserId: ['', [Validators.required]]});
+
     this.httpClientService.getCart().subscribe( response =>{ 
       this.data=response;
       for(var i=0; i< this.data.length; i++)
       {
       this.numberOfItems++;
-      this.totalPrice += this.data[i].Price;
+      this.totalQuantity += this.data[i].Quantity;
+      this.totalPrice += this.data[i].Price * this.data[i].Quantity;
+
       }
     });
 
@@ -65,14 +73,37 @@ export class GetCartComponent implements OnInit {
 
   get f() { return this.deleteForm.controls; }
 
-   onSubmit() {
-       this.submitted = true;
+  onSubmit() {
+      this.submitted = true;
+      if (this.deleteForm.invalid) {
+          return;
+      }
 
-       if (this.deleteForm.invalid) {
-           return;
-       }
+      this.deleteItem();
+       
+   }
 
-       this.deleteItem();
+   placeOrder(): void {
+    this.httpClientService.placeOrder(this.placeOrderForm.controls['UserId'].value).subscribe( data => {
+      alert("Order placed successfully.");
+      this.router.navigate(['/getVinyls']);
+      this.invalidOrder = false;
+    },
+    error => {
+      this.invalidOrder = true;
+    }
+  );
+  }
+
+  get f1() { return this.placeOrderForm.controls; }
+
+  onSubmit1() {
+      this.submitted = true;
+      if (this.placeOrderForm.invalid) {
+          return;
+      }
+
+      this.placeOrder();
        
    }
 
