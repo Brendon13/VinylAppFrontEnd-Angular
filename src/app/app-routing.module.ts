@@ -11,6 +11,7 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { AuthManagerService } from './service/auth-manager.service';
 import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { VinylCrudComponent } from './vinyl-crud/vinyl-crud.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -21,8 +22,8 @@ const routes: Routes = [
   { path: 'addManager', component: AddManagerComponent, canActivate:[AuthManagerService] },
   { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] },
   { path: 'getCart', component: GetCartComponent, canActivate:[AuthGuardService] },
-  { path: 'getUserOrders', component: UserOrdersComponent, canActivate:[AuthGuardService] }
-  
+  { path: 'getUserOrders', component: UserOrdersComponent, canActivate:[AuthGuardService] },
+  { path: 'vinylCrud', component: VinylCrudComponent, canActivate:[AuthManagerService] }
 ];
 
 @NgModule({

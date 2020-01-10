@@ -19,6 +19,7 @@ import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { VinylCrudComponent } from './vinyl-crud/vinyl-crud.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserOrdersComponent } from './user-orders/user-orders.component';
     VerifyUserComponent,
     GetCartComponent,
     UserOrdersComponent,
+    VinylCrudComponent,
   ],
   imports: [
     BrowserModule,

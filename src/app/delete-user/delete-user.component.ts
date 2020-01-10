@@ -12,7 +12,7 @@ export class DeleteUserComponent implements OnInit {
   data:any;
   invalidDeletion = false;
 
-  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   ngOnInit() {
   }

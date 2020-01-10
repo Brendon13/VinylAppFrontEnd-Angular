@@ -25,7 +25,6 @@ export class Item{
 
 export class ItemWithOutId{
   constructor(
-    public id:number,
     public name:string,
     public description:string,
     public price:number,
@@ -90,12 +89,34 @@ export class HttpClientService {
     return this.httpClient.get('http://localhost:8080/VinylStore/api/users/orders').pipe(catchError(this.handleError));
   }
 
+  public addVinyl(vinyl){
+    return this.httpClient.post<Item>('http://localhost:8080/VinylStore/api/vinylsAdd', vinyl).pipe(catchError(this.handleErrorAddVinyl));
+  }
+
+  public deleteVinyl(itemId){
+    return this.httpClient.delete('http://localhost:8080/VinylStore/api/vinyls/' + itemId).pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse)
   {
     let splitted = JSON.stringify(error.error).split(":");
     let splitted2 = splitted[splitted.length-1];
     let errorMessage = splitted2.substr(1, splitted2.length-3);
-    console.log(errorMessage);
+
+    alert(errorMessage);
+    return throwError(error);
+  }
+
+  handleErrorAddVinyl(error: HttpErrorResponse)
+  {
+    let splitted = JSON.stringify(error.error).split(":");
+    let splitted2 = splitted[splitted.length-1];
+    let errorMessage = splitted2.substr(1, splitted2.length-3);
+
+    if(error.error.error == 'Bad Request'){
+       alert('Quantity must be integer value!');
+    }
+    else 
     alert(errorMessage);
     return throwError(error);
   }
