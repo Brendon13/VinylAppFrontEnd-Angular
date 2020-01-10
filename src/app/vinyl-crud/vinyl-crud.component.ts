@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 export class VinylCrudComponent implements OnInit {
   addVinylForm: FormGroup;
   deleteVinylForm: FormGroup;
+  updateVinylForm: FormGroup;
   submitted = false;
   submitted2 = false;
+  submitted3 = false;
   vinyl: ItemWithOutId = new ItemWithOutId("", "", 0, 0);
   invalidDeletion = false;
   data: any;
@@ -30,6 +32,13 @@ export class VinylCrudComponent implements OnInit {
 
       this.deleteVinylForm = this.formBuilder.group({
         ItemId: ['', [Validators.required]]});
+
+        this.updateVinylForm = this.formBuilder.group({
+          ItemId: ['', [Validators.required]],
+          description: ['', Validators.required],
+          name: ['', Validators.required],
+          price: ['', [Validators.required]],
+          quantity: ['', [Validators.required]]});
   }
 
   createVinyl(): void {
@@ -78,6 +87,35 @@ export class VinylCrudComponent implements OnInit {
       }
 
       this.deleteItem();
+       
+   }
+
+   updateVinyl(): void {
+    this.vinyl.description = this.updateVinylForm.controls['description'].value;
+    this.vinyl.name = this.updateVinylForm.controls['name'].value;
+    this.vinyl.price = this.updateVinylForm.controls['price'].value;
+    this.vinyl.quantity = this.updateVinylForm.controls['quantity'].value;
+
+    this.httpClientService.updateVinyl(this.updateVinylForm.controls['ItemId'].value, this.vinyl).subscribe( data => {
+      alert("Vinyl updated successfully.");
+      this.router.navigate(['/getVinyls']);
+      this.invalidDeletion = false;
+    },
+    error => {
+      this.invalidDeletion = true;
+    }
+  );
+  }
+
+  get f3() { return this.updateVinylForm.controls; }
+
+  onSubmit3() {
+      this.submitted3 = true;
+      if (this.updateVinylForm.invalid) {
+          return;
+      }
+
+      this.updateVinyl();
        
    }
 
