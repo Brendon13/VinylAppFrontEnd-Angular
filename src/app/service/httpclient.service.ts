@@ -38,6 +38,12 @@ export class CartItemDTO{
   ){}
 }
 
+export class StatusDTO{
+  constructor(
+    public statusId:number
+  ){}
+}
+
 export class Cart{
   constructor(
     public NumberOfItems:number,
@@ -103,6 +109,10 @@ export class HttpClientService {
 
   public getCustomers(){
     return this.httpClient.get('http://localhost:8080/VinylStore/api/customers').pipe(catchError(this.handleError));
+  }
+
+  public updateOrder(orderId){
+    return this.httpClient.put('http://localhost:8080/VinylStore/api/orders/' + orderId, status).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse)

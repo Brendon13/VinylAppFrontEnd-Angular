@@ -13,6 +13,7 @@ import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { VinylCrudComponent } from './vinyl-crud/vinyl-crud.component';
 import { CustomersComponent } from './customers/customers.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'getCart', component: GetCartComponent, canActivate:[AuthGuardService] },
   { path: 'getUserOrders', component: UserOrdersComponent, canActivate:[AuthGuardService] },
   { path: 'vinylCrud', component: VinylCrudComponent, canActivate:[AuthManagerService] },
-  { path: 'getCustomers', component: CustomersComponent, canActivate:[AuthManagerService] }
+  { path: 'getCustomers', component: CustomersComponent, canActivate:[AuthManagerService] },
+  { path: 'orders', component: OrdersComponent, canActivate:[AuthManagerService] }
 ];
 
 @NgModule({

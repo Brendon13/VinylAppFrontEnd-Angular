@@ -21,6 +21,7 @@ import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { VinylCrudComponent } from './vinyl-crud/vinyl-crud.component';
 import { CustomersComponent } from './customers/customers.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CustomersComponent } from './customers/customers.component';
     UserOrdersComponent,
     VinylCrudComponent,
     CustomersComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,
