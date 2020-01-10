@@ -40,7 +40,7 @@ export class CartItemDTO{
 
 export class StatusDTO{
   constructor(
-    public statusId:number
+    public id:number
   ){}
 }
 
@@ -111,7 +111,7 @@ export class HttpClientService {
     return this.httpClient.get('http://localhost:8080/VinylStore/api/customers').pipe(catchError(this.handleError));
   }
 
-  public updateOrder(orderId){
+  public updateOrder(orderId, status){
     return this.httpClient.put('http://localhost:8080/VinylStore/api/orders/' + orderId, status).pipe(catchError(this.handleError));
   }
 
