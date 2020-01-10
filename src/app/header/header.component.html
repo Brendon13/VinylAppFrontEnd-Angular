@@ -8,6 +8,7 @@
       <li><a *ngIf="loginService.isUserManager()" routerLink="/addManager" class="nav-link">Add Manager</a></li>
       <li><a *ngIf="loginService.isUserManager()" routerLink="/vinylCrud" class="nav-link">Edit Vinyls</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/getVinyls" class="nav-link">Vinyls</a></li>
+      <li><a *ngIf="loginService.isUserManager()" routerLink="/getCustomers" class="nav-link">Customers</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/getCart" class="nav-link">Cart</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/getUserOrders" class="nav-link">Orders</a></li>
       <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/deleteUser" class="nav-link">Delete User</a></li>
