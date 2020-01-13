@@ -17,6 +17,7 @@ import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
 import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
 import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
 import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
+import { ViewUserOrdersComponent } from './view-user-orders/view-user-orders.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'vinylCreate', component: VinylCreateComponent, canActivate:[AuthManagerService] },
   { path: 'vinylUpdate', component: VinylUpdateComponent, canActivate:[AuthManagerService] },
   { path: 'vinylDelete', component: VinylDeleteComponent, canActivate:[AuthManagerService] },
-  { path: 'vinylView', component: VinylViewComponent, canActivate:[AuthManagerService] }
+  { path: 'vinylView', component: VinylViewComponent, canActivate:[AuthManagerService] },
+  { path: 'vinylUserOrders', component: ViewUserOrdersComponent, canActivate:[AuthManagerService] }
 ];
 
 @NgModule({

@@ -25,6 +25,7 @@ import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
 import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
 import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
 import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
+import { ViewUserOrdersComponent } from './view-user-orders/view-user-orders.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
     VinylUpdateComponent,
     VinylDeleteComponent,
     VinylViewComponent,
+    ViewUserOrdersComponent,
   ],
   imports: [
     BrowserModule,

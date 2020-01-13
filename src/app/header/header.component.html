@@ -23,7 +23,7 @@
         </div>
       </li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getVinyls">Vinyls</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">Customers</a></li>
+      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">View Customers</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getCart">Cart</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/orders">Edit Orders</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getUserOrders">Orders</a></li>
