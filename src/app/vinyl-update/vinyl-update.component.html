@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Vinyl Update</h3>
+                <form [formGroup]="updateVinylForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Vinyl ID</label>
+                        <input type="text" formControlName="ItemId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemId.errors }" />
+                        <div *ngIf="submitted && f.ItemId.errors" class="invalid-feedback">
+                            <div *ngIf="f.ItemId.errors.required">Vinyl ID is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">Description is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                            <div *ngIf="f.price.errors.required">Price is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="text" ng-pattern="^[0-9]*$" formControlName="quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+                        <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                            <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Update Vinyl</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

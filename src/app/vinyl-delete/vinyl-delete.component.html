@@ -1,0 +1,43 @@
+<div class="jumbotron">
+    <div class="container">
+        <h3>Vinyl Deletion</h3>
+            <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+                <thead>
+                <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Vinyls of data">
+                        <td>{{Vinyls.Id}}</td>
+                        <td>{{Vinyls.Name}}</td>
+                        <td>{{Vinyls.Description}}</td>
+                        <td>{{Vinyls.Price}}</td>
+                        <td>{{Vinyls.Quantity}}</td>
+                        <td>
+                            <form [formGroup]="deleteVinylForm" (submit)="onSubmit(Vinyls.Id)">
+                            <div class="form-group">
+                                <button class="btn btn-primary">Delete</button>
+                            </div>
+                        </form>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            </table>
+    </div>
+</div>

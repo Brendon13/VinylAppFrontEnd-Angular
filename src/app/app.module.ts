@@ -19,9 +19,12 @@ import { AddManagerComponent } from './add-manager/add-manager.component';
 import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
-import { VinylCrudComponent } from './vinyl-crud/vinyl-crud.component';
 import { CustomersComponent } from './customers/customers.component';
 import { OrdersComponent } from './orders/orders.component';
+import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
+import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
+import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
+import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,12 @@ import { OrdersComponent } from './orders/orders.component';
     VerifyUserComponent,
     GetCartComponent,
     UserOrdersComponent,
-    VinylCrudComponent,
     CustomersComponent,
     OrdersComponent,
+    VinylCreateComponent,
+    VinylUpdateComponent,
+    VinylDeleteComponent,
+    VinylViewComponent,
   ],
   imports: [
     BrowserModule,

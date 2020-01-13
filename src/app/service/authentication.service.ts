@@ -65,9 +65,11 @@ export class AuthenticationService {
     }
   }
 
-  isUserLoggedInAndManager(){
-    this.isUserLoggedIn();
-    this.isUserManager();
+  isUserCustomer(){
+    if(this.isUserLoggedIn()){
+      let userRole = sessionStorage.getItem('role');
+      return (userRole.match('false'));
+    }
   }
 
   logOut() {

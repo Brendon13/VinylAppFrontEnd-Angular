@@ -1,35 +1,57 @@
 <div class="jumbotron">
     <div class="container"> 
-      <!-- <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h3>Get User Orders</h3>
+                        <form [formGroup]="getOrderForm" (ngSubmit)="onSubmit2()">
+                            <div class="form-group">
+                                <label>User ID</label>
+                                <input type="number" formControlName="ID" class="form-control" [ngClass]="{ 'is-invalid': submitted2 && f2.ID.errors }" />
+                                <div *ngIf="submitted2 && f2.ID.errors" class="invalid-feedback">
+                                    <div *ngIf="f2.ID.errors.required">User ID is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Get Orders</button>
+                            </div>
+                        </form>
+                        <!-- <button class="btn btn-primary" (click)="onSubmit3()">Refresh Orders</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Quantity</th>
+          <th>OrderDate</th>
+          <th>UpdateDate</th>
+          <th>Cost</th>
+          <th>Status</th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Vinyls of data">
-                <td>{{Vinyls.Id}}</td>
-                <td>{{Vinyls.Name}}</td>
-                <td>{{Vinyls.Description}}</td>
-                <td>{{Vinyls.Price}}</td>
-                <td>{{Vinyls.Quantity}}</td>
+            <tr *ngFor="let Orders of data">
+                <td>{{Orders.Id}}</td>
+                <td>{{Orders.OrderDate}}</td>
+                <td>{{Orders.UpdateDate}}</td>
+                <td>{{Orders.Cost}}</td>
+                <td>{{Orders.Status}}</td>
             </tr>
         </tbody>
         <tfoot>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>OrderDate</th>
+            <th>UpdateDate</th>
+            <th>Cost</th>
+            <th>Status</th>
           </tr>
       </tfoot>
       </table>
-  <br><br> -->
+  <br><br> 
       <div class="row">
         <div class="col-md-6 offset-md-3">
             <h3>Update Order</h3>
