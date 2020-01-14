@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ItemWithOutId, HttpClientService } from '../service/httpclient.service';
 import { Router } from '@angular/router';
@@ -13,19 +13,31 @@ export class VinylUpdateComponent implements OnInit {
   submitted = false;
   vinyl: ItemWithOutId = new ItemWithOutId("", "", 0, 0);
   invalidDeletion = false;
-  data: any;
+  retrievedVinyl: ItemWithOutId = new ItemWithOutId("", "", 0, 0);
+  ItemId: any;
+  data:any;
 
   errorMessage: String;
 
-  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
+  quantityPattern = "^[0-9]*$";
+
+  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) {
+    this.ItemId = this.router.getCurrentNavigation().extras.state.ItemId; }
 
   ngOnInit() {
-        this.updateVinylForm = this.formBuilder.group({
-          ItemId: ['', [Validators.required]],
-          description: ['', Validators.required],
-          name: ['', Validators.required],
-          price: ['', [Validators.required]],
-          quantity: ['', [Validators.required]]});
+    this.httpClientService.getVinyl(this.ItemId).subscribe( response => {
+    this.data=response;
+    this.retrievedVinyl.description = this.data.Description;
+    this.retrievedVinyl.name = this.data.Name;
+    this.retrievedVinyl.price = this.data.Price;
+    this.retrievedVinyl.quantity = this.data.Quantity;
+    });
+
+    this.updateVinylForm = this.formBuilder.group({
+      description: ['', Validators.required],
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+      quantity: ['', [Validators.required, Validators.pattern(this.quantityPattern)]]});
   }
 
    updateVinyl(): void {
@@ -34,9 +46,9 @@ export class VinylUpdateComponent implements OnInit {
     this.vinyl.price = this.updateVinylForm.controls['price'].value;
     this.vinyl.quantity = this.updateVinylForm.controls['quantity'].value;
 
-    this.httpClientService.updateVinyl(this.updateVinylForm.controls['ItemId'].value, this.vinyl).subscribe( data => {
+    this.httpClientService.updateVinyl(this.ItemId, this.vinyl).subscribe( data => {
       alert("Vinyl updated successfully.");
-      this.router.navigate(['/getVinyls']);
+      this.router.navigate(['/vinylView']);
       this.invalidDeletion = false;
     },
     error => {
@@ -49,6 +61,7 @@ export class VinylUpdateComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
+      console.log(this.updateVinylForm.controls['description'].value);
       if (this.updateVinylForm.invalid) {
           return;
       }

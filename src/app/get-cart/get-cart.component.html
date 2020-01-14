@@ -1,8 +1,9 @@
 <div class="jumbotron">
     <div class="container">
+        <h3>Cart</h3>
         <table datatable [dtTrigger]="dtTrigger" [dtOptions]="dtOptions" class="row-border hover">
             <thead>
-            <tr>
+            <tr align="center">
               <th>Number of Items</th>
               <th>Total cost</th>
               <th>Total Quantity</th>
@@ -10,20 +11,20 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr align="center">
                     <td>{{numberOfItems}}</td>
                     <td>{{totalPrice}}</td>
                     <td>{{totalQuantity}}</td>
                     <td><form (ngSubmit)="onSubmit1()">
-                        <div class="form-group">
+                        <span class="form-group">
                             <button class="btn btn-primary">Place Order</button>
-                        </div>
+                        </span>
                         </form >
                 </td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
+                <tr align="center">
                     <th>Number of Items</th>
                     <th>Total cost</th>
                     <th>Total Quantity</th>
@@ -32,52 +33,44 @@
             </tfoot>
           </table>
         <br><br>
-       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
-         <thead>
-         <tr>
-           <th>ID</th>
-           <th>Name</th>
-           <th>Description</th>
-           <th>Price</th>
-           <th>Quantity</th>
-         </tr>
-         </thead>
-        <tbody>
-            <tr *ngFor="let Items of data">
-                <td>{{Items.Id}}</td>
-                <td>{{Items.Name}}</td>
-                <td>{{Items.Description}}</td>
-                <td>{{Items.Price}}</td>
-                <td>{{Items.Quantity}}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
+        <h3>Cart Items</h3>
+        <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+            <tr align="center">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th></th>
             </tr>
-        </tfoot>
-      </table>
-      
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h3>Delete Item</h3>
-            <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label>Item ID</label>
-                    <input type="number" formControlName="ItemId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemId.errors }" />
-                    <div *ngIf="submitted && f.ItemId.errors" class="invalid-feedback">
-                        <div *ngIf="f.ItemId.errors.required">Item ID is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary">Delete</button>
-                </div>
-            </form>
-        </div>
-    </div>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Items of data" align="center">
+                    <td>{{Items.Id}}</td>
+                    <td>{{Items.Name}}</td>
+                    <td>{{Items.Description}}</td>
+                    <td>{{Items.Price}}</td>
+                    <td>{{Items.Quantity}}</td>
+                    <td>
+                        <form [formGroup]="deleteForm" (submit)="onSubmit(Items.Id)">
+                            <span class="form-group">
+                                <button class="btn btn-primary" style="background-color: #4d0000">Delete</button>
+                            </span>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr align="center">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
   </div>
 </div>

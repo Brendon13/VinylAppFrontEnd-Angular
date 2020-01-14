@@ -119,6 +119,10 @@ export class HttpClientService {
     return this.httpClient.get('http://localhost:8080/VinylStore/api/users/' + userId + '/orders').pipe(catchError(this.handleError));
   }
 
+  public getVinyl(vinylId){
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/vinyls/' + vinylId).pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse)
   {
     let splitted = JSON.stringify(error.error).split(":");

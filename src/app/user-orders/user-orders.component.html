@@ -2,7 +2,7 @@
     <div class="container"> 
       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
-        <tr>
+        <tr align="center">
           <th>ID</th>
           <th>Order Date</th>\
           <th>Update Date</th>
@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Orders of data">
+            <tr *ngFor="let Orders of data" align="center">
                 <td>{{Orders.Id}}</td>
                 <td>{{Orders.OrderDate}}</td>
                 <td>{{Orders.UpdateDate}}</td>
@@ -20,7 +20,7 @@
             </tr>
         </tbody>
         <tfoot>
-          <tr>
+          <tr align="center">
             <th>ID</th>
             <th>Order Date</th>
             <th>Update Date</th>

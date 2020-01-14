@@ -22,7 +22,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.viewOrdersForm = this.formBuilder.group({
-      ItemId: ['', [Validators.required]]});
+      UserId: ['', [Validators.required]]});
 
     this.httpClientService.getCustomers().subscribe( response =>{ 
       this.data=response;
@@ -32,5 +32,9 @@ export class CustomersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+  
+  onSubmit(UserId) {
+    this.router.navigate(['/getUserOrdersAdmin'], { state: { userId: UserId } });
   }
 }

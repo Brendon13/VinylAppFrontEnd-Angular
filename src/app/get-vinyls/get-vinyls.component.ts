@@ -22,14 +22,14 @@ export class GetVinylsComponent implements OnInit, OnDestroy {
   submitted = false;
   invalidSelection = false;
   cartItemDTO: CartItemDTO = new CartItemDTO(0);
+  ItemId:any;
 
   constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
  
     this.addToCartForm = this.formBuilder.group({
-      ID: ['', [Validators.required]],
-      quantity: ['', [Validators.required]],});
+      quantity: ['', [Validators.required]]});
 
     this.httpClientService.getVinyls().subscribe( response => {
       this.data=response
@@ -45,7 +45,7 @@ export class GetVinylsComponent implements OnInit, OnDestroy {
 
   addToCart(): void {
     this.cartItemDTO.quantity = this.addToCartForm.controls['quantity'].value;
-    this.httpClientService.addToCart(this.addToCartForm.controls['ID'].value, this.cartItemDTO).subscribe( data => {
+    this.httpClientService.addToCart(this.ItemId, this.cartItemDTO).subscribe( data => {
       alert("Item added/updated to cart successfully.");
       this.router.navigate(['/getCart']);
       this.invalidSelection = false;
@@ -58,14 +58,15 @@ export class GetVinylsComponent implements OnInit, OnDestroy {
 
   get f() { return this.addToCartForm.controls; }
 
-   onSubmit() {
-       this.submitted = true;
-
-       if (this.addToCartForm.invalid) {
-           return;
-       }
-
-       this.addToCart();
+   onSubmit(ItemId) {
+      this.submitted = true;
+      this.ItemId = ItemId;
+      console.log(this.ItemId);
+      if (this.addToCartForm.invalid) {
+        console.log(this.addToCartForm.invalid);
+          return;
+      }
+      this.addToCart();
        
    }
 

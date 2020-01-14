@@ -1,59 +1,7 @@
 <div class="jumbotron">
     <div class="container"> 
-        <div class="jumbotron">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <h3>Get User Orders</h3>
-                        <form [formGroup]="getOrderForm" (ngSubmit)="onSubmit2()">
-                            <div class="form-group">
-                                <label>User ID</label>
-                                <input type="number" formControlName="ID" class="form-control" [ngClass]="{ 'is-invalid': submitted2 && f2.ID.errors }" />
-                                <div *ngIf="submitted2 && f2.ID.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.ID.errors.required">User ID is required</div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary">Get Orders</button>
-                            </div>
-                        </form>
-                        <!-- <button class="btn btn-primary" (click)="onSubmit3()">Refresh Orders</button> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
-        <thead>
-        <tr>
-          <th>ID</th>
-          <th>OrderDate</th>
-          <th>UpdateDate</th>
-          <th>Cost</th>
-          <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let Orders of data">
-                <td>{{Orders.Id}}</td>
-                <td>{{Orders.OrderDate}}</td>
-                <td>{{Orders.UpdateDate}}</td>
-                <td>{{Orders.Cost}}</td>
-                <td>{{Orders.Status}}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>OrderDate</th>
-            <th>UpdateDate</th>
-            <th>Cost</th>
-            <th>Status</th>
-          </tr>
-      </tfoot>
-      </table>
-  <br><br> 
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
             <h3>Update Order</h3>
             <form [formGroup]="updateOrderForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
@@ -74,7 +22,7 @@
                     <button class="btn btn-primary">Update Order</button>
                 </div>
             </form>
+            </div>
         </div>
     </div>
-    </div>
-  </div>
+</div>

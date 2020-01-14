@@ -21,9 +21,9 @@
                         <td>{{Vinyls.Quantity}}</td>
                         <td>
                             <form [formGroup]="deleteVinylForm" (submit)="onSubmit(Vinyls.Id)">
-                            <div class="form-group">
-                                <button class="btn btn-primary">Delete</button>
-                            </div>
+                                <span class="form-group">
+                                    <button class="btn btn-primary" style="background-color: #4d0000">Delete</button>
+                                </span>
                             </form>
                         </td>
                     </tr>

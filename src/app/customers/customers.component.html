@@ -1,8 +1,9 @@
 <div class="jumbotron">
     <div class="container">
+        <h3>Customers</h3>
         <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
             <thead>
-            <tr>
+            <tr align="center">
             <th>ID</th>
             <th>Email</th>
             <th>First Name</th>
@@ -11,22 +12,22 @@
             </tr>
             </thead>
         <tbody>
-            <tr *ngFor="let Customers of data">
+            <tr *ngFor="let Customers of data" align="center">
                 <td>{{Customers.Id}}</td>
                 <td>{{Customers.Email}}</td>
                 <td>{{Customers.FirstName}}</td>
                 <td>{{Customers.LastName}}</td>
                 <td>
-                    <form [formGroup]="viewOrdersForm" (submit)="onSubmit(Vinyls.Id)">
-                        <div class="form-group">
-                            <button class="btn btn-primary">Orders</button>
-                        </div>
+                    <form [formGroup]="viewOrdersForm" (submit)="onSubmit(Customers.Id)">
+                        <span class="form-group" align="center">
+                            <button class="btn btn-primary">Edit Order</button>
+                        </span>
                         </form>
                 </td>
             </tr>
         </tbody>
         <tfoot>
-            <tr>
+            <tr align="center">
                 <th>ID</th>
                 <th>Email</th>
                 <th>First Name</th>

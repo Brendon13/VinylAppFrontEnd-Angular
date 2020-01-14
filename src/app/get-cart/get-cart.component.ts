@@ -53,8 +53,8 @@ export class GetCartComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
-  deleteItem(): void {
-    this.httpClientService.deleteItem(this.deleteForm.controls['ItemId'].value).subscribe( data => {
+  deleteItem(ItemId): void {
+    this.httpClientService.deleteItem(ItemId).subscribe( data => {
       alert("Item deleted successfully.");
       this.router.navigate(['/getVinyls']);
       this.invalidDeletion = false;
@@ -65,16 +65,8 @@ export class GetCartComponent implements OnInit, OnDestroy {
   );
   }
 
-  get f() { return this.deleteForm.controls; }
-
-  onSubmit() {
-      this.submitted = true;
-      if (this.deleteForm.invalid) {
-          return;
-      }
-
-      this.deleteItem();
-       
+  onSubmit(ItemId) {
+      this.deleteItem(ItemId);
    }
 
    placeOrder(): void {

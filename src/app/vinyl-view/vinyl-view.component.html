@@ -2,30 +2,39 @@
     <div class="container"> 
       <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
-        <tr>
+        <tr align="center">
           <th>ID</th>
           <th>Name</th>
           <th>Description</th>
           <th>Price</th>
           <th>Quantity</th>
+          <th></th>
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Vinyls of data">
+            <tr *ngFor="let Vinyls of data" align="center">
                 <td>{{Vinyls.Id}}</td>
                 <td>{{Vinyls.Name}}</td>
                 <td>{{Vinyls.Description}}</td>
                 <td>{{Vinyls.Price}}</td>
                 <td>{{Vinyls.Quantity}}</td>
+                <td>
+                  <form [formGroup]="updateVinylForm" (submit)="onSubmit(Vinyls.Id)">
+                    <span class="form-group">
+                        <button class="btn btn-primary">Update</button>
+                    </span>
+                </form>
+                </td>
             </tr>
         </tbody>
         <tfoot>
-          <tr>
+          <tr align="center">
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th></th>
           </tr>
       </tfoot>
       </table>

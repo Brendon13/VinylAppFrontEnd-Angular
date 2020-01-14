@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClientService } from '../service/httpclient.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vinyl-view',
@@ -13,9 +15,15 @@ export class VinylViewComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<unknown> = new Subject();
   data:any;
 
-  constructor(private httpClientService: HttpClientService) { }
+  updateVinylForm: FormGroup;
+  invalidDeletion = false;
+
+  constructor(private httpClientService: HttpClientService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this.updateVinylForm = this.formBuilder.group({
+      ItemId: ['', [Validators.required]]});
+
     this.httpClientService.getVinyls().subscribe( response => {
       this.data=response
       this.dtTrigger.next();
@@ -25,5 +33,9 @@ export class VinylViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+  onSubmit(ItemId) {
+    this.router.navigate(['/vinylUpdate'], { state: { ItemId: ItemId } });
   }
 }

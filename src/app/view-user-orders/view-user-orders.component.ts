@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-user-orders.component.css']
 })
 export class ViewUserOrdersComponent implements OnInit {
-
+  //, {state: {data: {}}}
   constructor() { }
 
   ngOnInit() {

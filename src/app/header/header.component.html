@@ -16,16 +16,14 @@
           Edit Vinyls
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylView">View</a>
+          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylView">View and Update</a>
           <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylCreate">Create</a>
-          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylUpdate">Update</a>
           <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylDelete">Delete</a>
         </div>
       </li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getVinyls">Vinyls</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">View Customers</a></li>
+      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">Edit Customers Orders</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getCart">Cart</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/orders">Edit Orders</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getUserOrders">Orders</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/deleteUser">Delete User</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">Log Out</a></li>

@@ -1,35 +1,51 @@
 <div class="jumbotron">
-  <div class="container"> 
-    <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let Vinyls of data">
-              <td>{{Vinyls.Id}}</td>
-              <td>{{Vinyls.Name}}</td>
-              <td>{{Vinyls.Description}}</td>
-              <td>{{Vinyls.Price}}</td>
-              <td>{{Vinyls.Quantity}}</td>
-          </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Quantity</th>
-        </tr>
-    </tfoot>
-    </table>
-<br><br>
+    <div class="container"> 
+        <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+            <tr align="center">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Vinyls of data" align="center">
+                    <td>{{Vinyls.Id}}</td>
+                    <td>{{Vinyls.Name}}</td>
+                    <td>{{Vinyls.Description}}</td>
+                    <td>{{Vinyls.Price}}</td>
+                    <td>{{Vinyls.Quantity}}</td>
+                    <td>
+                        <form [formGroup]="addToCartForm" (ngSubmit)="onSubmit(Vinyls.Id)">
+                            <div class="form-group">
+                                <label>Quantity to add to cart</label>
+                                <input type="number" formControlName="quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }" />
+                                    <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                                        <div *ngIf="f.quantity.errors.required">Quantity is required</div>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+            <tr align="center">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+                <th></th>
+            </tr>
+            </tfoot>
+            </table>
+<!-- <br><br>
     <div class="row">
       <div class="col-md-6 offset-md-3">
           <h3>Add Item to Cart</h3>
@@ -53,6 +69,6 @@
               </div>
           </form>
       </div>
-  </div>
-  </div>
+  </div> -->
+    </div>
 </div>

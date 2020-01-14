@@ -1,0 +1,49 @@
+<div class="jumbotron">
+    <div class="container"> 
+        <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+                <tr align="center">
+                    <th>ID</th>
+                    <th>Order Date</th>
+                    <th>Update Date</th>
+                    <th>Cost</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Orders of data" align="center">
+                    <td>{{Orders.Id}}</td>
+                    <td>{{Orders.OrderDate}}</td>
+                    <td>{{Orders.UpdateDate}}</td>
+                    <td>{{Orders.Cost}}</td>
+                    <td>{{Orders.Status}}</td>
+                    <td>
+                        <form [formGroup]="updateOrderForm" (ngSubmit)="onSubmit(Orders.Id)">
+                            <div class="form-group">
+                                <label>Status ID</label>
+                                <input type="number" formControlName="statusId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.statusId.errors }" />
+                                <div *ngIf="submitted && f.statusId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.statusId.errors.required">Status ID is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary">Update Order</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr align="center">
+                    <th>ID</th>
+                    <th>Order Date</th>
+                    <th>Update Date</th>
+                    <th>Cost</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

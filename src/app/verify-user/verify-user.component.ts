@@ -10,6 +10,7 @@ import { AuthenticationService } from '../service/authentication.service';
 export class VerifyUserComponent implements OnInit {
 
   invalidManager = false;
+  data:any;
 
   constructor(private router: Router, private loginservice: AuthenticationService) { }
 
@@ -20,7 +21,13 @@ export class VerifyUserComponent implements OnInit {
   checkManager(){
     (this.loginservice.verifyUser().subscribe(
       data => {
-        this.router.navigate(['/getVinyls']);
+        this.data=data;
+        if(data.role == true){
+          this.router.navigate(['/getCustomers']);
+        }
+        else{
+          this.router.navigate(['/getVinyls']);
+        }
         this.invalidManager = false;
       },
       error => {
