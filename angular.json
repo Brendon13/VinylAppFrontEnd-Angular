@@ -21,18 +21,33 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/images/icons/favicon.ico"
             ],
             "styles": [
               "src/styles.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css",
+              "src/assets/vendor/css-hamburgers/hamburgers.min.css",
+              "src/assets/vendor/animsition/css/animsition.min.css",
+              "src/assets/vendor/select2/select2.min.css",
+              "src/assets/vendor/daterangepicker/daterangepicker.css",
+              "src/assets/css/util.css",
+              "src/assets/css/main.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/vendor/animsition/js/animsition.min.js",
+              "src/assets/vendor/select2/select2.min.js",
+              "src/assets/vendor/daterangepicker/moment.min.js",
+              "src/assets/vendor/daterangepicker/daterangepicker.js",
+              "src/assets/vendor/countdowntime/countdowntime.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
