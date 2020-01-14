@@ -1,12 +1,19 @@
 <div class="jumbotron">
   <div class="container" align="center">
-      <div>
-        User Name : <input type="email" name="username" [(ngModel)]="username">
-        Password : <input type="password" name="password" [(ngModel)]="password">
-      </div>
-      <br>
-      <button (click)=checkLogin() class="btn btn-success">
-        Login
-      </button>
+    <form class="text-center border border-light p-5">
+
+      <p class="h4 mb-4">Sign in</p>
+
+      <input type="email" name="username" [(ngModel)]="username" class="form-control mb-4" placeholder="E-mail">
+
+      <input type="password" name="password" [(ngModel)]="password" class="form-control mb-4" placeholder="Password">
+
+      <button (click)=checkLogin() mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+
+      <p>Not a member?
+        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/addUser">Register</a>
+      </p>
+    </form>
   </div>
 </div>
+

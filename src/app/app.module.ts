@@ -20,7 +20,6 @@ import { VerifyUserComponent } from './verify-user/verify-user.component';
 import { GetCartComponent } from './get-cart/get-cart.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { CustomersComponent } from './customers/customers.component';
-import { OrdersComponent } from './orders/orders.component';
 import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
 import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
 import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
@@ -43,7 +42,6 @@ import { GetUserOrdersComponent } from './get-user-orders/get-user-orders.compon
     GetCartComponent,
     UserOrdersComponent,
     CustomersComponent,
-    OrdersComponent,
     VinylCreateComponent,
     VinylUpdateComponent,
     VinylDeleteComponent,
