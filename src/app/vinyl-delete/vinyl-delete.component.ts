@@ -40,7 +40,7 @@ export class VinylDeleteComponent implements OnInit, OnDestroy {
   deleteItem(ItemId): void {
     this.httpClientService.deleteVinyl(ItemId).subscribe( data => {
       alert("Vinyl deleted successfully.");
-      this.router.navigate(['/getVinyls']);
+      this.router.navigate(['/vinylView']);
       this.invalidDeletion = false;
     },
     error => {

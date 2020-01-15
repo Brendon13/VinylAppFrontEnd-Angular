@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewUserOrdersComponent } from './view-user-orders.component';
+import { GetEmptyOrderComponent } from './get-empty-order.component';
 
-describe('ViewUserOrdersComponent', () => {
-  let component: ViewUserOrdersComponent;
-  let fixture: ComponentFixture<ViewUserOrdersComponent>;
+describe('GetEmptyOrderComponent', () => {
+  let component: GetEmptyOrderComponent;
+  let fixture: ComponentFixture<GetEmptyOrderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewUserOrdersComponent ]
+      declarations: [ GetEmptyOrderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewUserOrdersComponent);
+    fixture = TestBed.createComponent(GetEmptyOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

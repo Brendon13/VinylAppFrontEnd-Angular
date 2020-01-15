@@ -34,7 +34,7 @@ export class AddManagerComponent implements OnInit {
     this.httpClientService.createManager(this.user)
         .subscribe( data => {
           alert("Manager created successfully.");
-          this.router.navigate(['']);
+          this.router.navigate(['/vinylView']);
         }); 
   };
 

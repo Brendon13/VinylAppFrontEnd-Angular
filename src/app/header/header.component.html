@@ -1,15 +1,11 @@
 <header>
-    <nav class ="navbar navbar-expand-md navbar-dark " style="background-color: #4d0000">
+    <nav class ="navbar navbar-expand-md navbar-dark" style="background-color: #4d0000">
     <span class="navbar-brand mb-0 h1">VinylStore</span>
     
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <!-- <li class="nav-item"><a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" routerLink="/addUser">Sign Up</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" routerLink="/login">Login</a></li> -->
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/addManager">Add Manager</a></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loginService.isUserManager()">
@@ -25,7 +21,10 @@
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">Edit Customers Orders</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getCart">Cart</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getUserOrders">Orders</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/deleteUser">Delete User</a></li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/deleteUser">Delete User</a></li>
       <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">Log Out</a></li>
     </ul>
     </div>

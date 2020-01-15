@@ -21,6 +21,7 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
   invalidUpdate = false;
   statusDTO: StatusDTO = new StatusDTO(0);
   orderId:any;
+  contor = 0;
 
   constructor(private httpClientService: HttpClientService, private router: Router, private formBuilder: FormBuilder) { 
     this.UserId = this.router.getCurrentNavigation().extras.state.userId;
