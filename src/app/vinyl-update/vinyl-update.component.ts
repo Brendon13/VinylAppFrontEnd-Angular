@@ -31,13 +31,16 @@ export class VinylUpdateComponent implements OnInit {
     this.retrievedVinyl.name = this.data.Name;
     this.retrievedVinyl.price = this.data.Price;
     this.retrievedVinyl.quantity = this.data.Quantity;
-    });
 
     this.updateVinylForm = this.formBuilder.group({
-      description: ['', Validators.required],
-      name: ['', Validators.required],
-      price: ['', Validators.required],
-      quantity: ['', [Validators.required, Validators.pattern(this.quantityPattern)]]});
+      description: [this.retrievedVinyl.description, Validators.required],
+      name: [this.retrievedVinyl.name, Validators.required],
+      price: [this.retrievedVinyl.price, Validators.required],
+      quantity: [this.retrievedVinyl.quantity, [Validators.required, Validators.pattern(this.quantityPattern)]]});
+
+    });
+
+    
   }
 
    updateVinyl(): void {
