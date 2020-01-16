@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { HttpClientService } from '../service/httpclient.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'app-get-cart',
@@ -10,14 +11,16 @@ import { Subject } from 'rxjs';
   styleUrls: ['./get-cart.component.css']
 })
 export class GetCartComponent implements OnInit, OnDestroy {
-  message = '';
+  
+  @ViewChild(DataTableDirective, {static: false}) dtElement: DataTableDirective;
+  dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<unknown> = new Subject();
+  show: boolean = false;
 
   data:any;
-  totalPrice: any = 0;
-  numberOfItems: any = 0;
-  totalQuantity: any = 0;
+  totalPrice = 0;
+  numberOfItems = 0;
+  totalQuantity = 0;
 
   deleteForm: FormGroup;
   submitted = false;
@@ -38,6 +41,7 @@ export class GetCartComponent implements OnInit, OnDestroy {
       this.totalQuantity += this.data[i].Quantity;
       this.totalPrice += this.data[i].Price * this.data[i].Quantity;
       }
+      this.showTable();
       this.dtTrigger.next();
     });
 
@@ -52,6 +56,13 @@ export class GetCartComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  showTable() {
+    this.show=true;
+    setTimeout(() => {
+      this.dtTrigger.next();
+    });
+}
 
   deleteItem(ItemId): void {
     this.httpClientService.deleteItem(ItemId).subscribe( data => {

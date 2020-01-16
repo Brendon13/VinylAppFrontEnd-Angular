@@ -24,9 +24,7 @@ import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
 import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
 import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
 import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
-import { GetEmptyCartComponent } from './get-empty-cart/get-empty-cart.component';
 import { GetUserOrdersComponent } from './get-user-orders/get-user-orders.component';
-import { GetEmptyOrderComponent } from './get-empty-order/get-empty-order.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +45,7 @@ import { GetEmptyOrderComponent } from './get-empty-order/get-empty-order.compon
     VinylUpdateComponent,
     VinylDeleteComponent,
     VinylViewComponent,
-    GetEmptyCartComponent,
-    GetUserOrdersComponent,
-    GetEmptyOrderComponent,
+    GetUserOrdersComponent
   ],
   imports: [
     BrowserModule,

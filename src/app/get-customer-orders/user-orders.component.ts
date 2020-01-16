@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { HttpClientService } from '../service/httpclient.service';
 import { Subject } from 'rxjs';
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'app-user-orders',
@@ -9,8 +10,10 @@ import { Subject } from 'rxjs';
 })
 export class UserOrdersComponent implements OnInit, OnDestroy {
   message = '';
+  @ViewChild(DataTableDirective, {static: false}) dtElement: DataTableDirective;
+  dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<unknown> = new Subject();
+  show: boolean = false;
 
   data:any;
 
@@ -20,9 +23,17 @@ export class UserOrdersComponent implements OnInit, OnDestroy {
  
     this.httpClientService.getUserOrder().subscribe( response => {
       this.data=response
+      this.showTable();
       this.dtTrigger.next();
     });
   }
+
+  showTable() {
+    this.show=true;
+    setTimeout(() => {
+      this.dtTrigger.next();
+    });
+}
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

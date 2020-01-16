@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ItemWithOutId, HttpClientService } from '../service/httpclient.service';
 import { Router } from '@angular/router';

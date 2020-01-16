@@ -16,9 +16,7 @@ import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
 import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
 import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
 import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
-import { GetEmptyCartComponent } from './get-empty-cart/get-empty-cart.component';
 import { GetUserOrdersComponent } from './get-user-orders/get-user-orders.component';
-import { GetEmptyOrderComponent } from './get-empty-order/get-empty-order.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -35,9 +33,7 @@ const routes: Routes = [
   { path: 'vinylUpdate', component: VinylUpdateComponent, canActivate:[AuthManagerService] },
   { path: 'vinylDelete', component: VinylDeleteComponent, canActivate:[AuthManagerService] },
   { path: 'vinylView', component: VinylViewComponent, canActivate:[AuthManagerService] },
-  { path: 'getEmptyCart', component: GetEmptyCartComponent, canActivate:[AuthGuardService] },
-  { path: 'getUserOrdersAdmin', component: GetUserOrdersComponent, canActivate:[AuthManagerService] },
-  { path: 'getEmptyOrder', component: GetEmptyOrderComponent, canActivate:[AuthGuardService] }
+  { path: 'getUserOrdersAdmin', component: GetUserOrdersComponent, canActivate:[AuthManagerService] }
   
 ];
 
