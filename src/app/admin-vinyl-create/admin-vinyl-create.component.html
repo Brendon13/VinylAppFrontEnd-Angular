@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="wrap-input100 form-group">
-                        <input class="input100 form-control" type="text" placeholder="Name" formControlName="name" value={{retrievedVinyl.name}} [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }">
+                        <input class="input100 form-control" type="text" placeholder="Name" formControlName="name" [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }">
                         <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                         <span *ngIf="submitted && formControls.name.errors" class="invalid-feedback">
                           <span *ngIf="formControls.name.errors.required">Name is required</span>
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="wrap-input100 form-group">
-                      <input class="input100 form-control" type="number" placeholder="Price" formControlName="price" value={{retrievedVinyl.price}} [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+                      <input class="input100 form-control" type="number" placeholder="Price" formControlName="price" [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
                       <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                       <span *ngIf="submitted && formControls.price.errors" class="invalid-feedback">
                         <span *ngIf="formControls.price.errors.required">Price is required</span>
@@ -50,7 +50,7 @@
                   </div>
 
                   <div class="wrap-input100 form-group">
-                      <input class="input100 form-control" type="text" placeholder="Quantity" formControlName="quantity" value={{retrievedVinyl.quantity}} [ngClass]="{ 'is-invalid': submitted && formControls.quantity.errors }">
+                      <input class="input100 form-control" type="text" placeholder="Quantity" formControlName="quantity" [ngClass]="{ 'is-invalid': submitted && formControls.quantity.errors }">
                       <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                       <span *ngIf="submitted && formControls.quantity.errors" class="invalid-feedback">
                           <span *ngIf="formControls.quantity.errors.required">Quantity is required</span>
