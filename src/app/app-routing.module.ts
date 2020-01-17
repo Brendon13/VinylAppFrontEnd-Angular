@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddUserComponent } from './add-user/add-user.component';
+import { AddUserComponent } from './customer-add-user/customer-add-user.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
-import { GetVinylsComponent } from './get-vinyls/get-vinyls.component';
-import { DeleteUserComponent } from './delete-user/delete-user.component';
-import { AddManagerComponent } from './add-manager/add-manager.component';
-import { VerifyUserComponent } from './verify-user/verify-user.component';
+import { GetVinylsComponent } from './customer-get-vinyls/customer-get-vinyls.component';
+import { DeleteUserComponent } from './customer-delete-user/customer-delete-user.component';
+import { AddManagerComponent } from './admin-add-manager/admin-add-manager.component';
 import { AuthManagerService } from './service/auth-manager.service';
-import { GetCartComponent } from './get-cart/get-cart.component';
-import { UserOrdersComponent } from './user-orders/user-orders.component';
-import { CustomersComponent } from './customers/customers.component';
-import { VinylCreateComponent } from './vinyl-create/vinyl-create.component';
-import { VinylUpdateComponent } from './vinyl-update/vinyl-update.component';
-import { VinylDeleteComponent } from './vinyl-delete/vinyl-delete.component';
-import { VinylViewComponent } from './vinyl-view/vinyl-view.component';
-import { GetUserOrdersComponent } from './get-user-orders/get-user-orders.component';
+import { GetCartComponent } from './customer-get-cart/customer-get-cart.component';
+import { UserOrdersComponent } from './customer-get-orders/customer-get-orders.component';
+import { CustomersComponent } from './admin-get-customers/admin-get-customers.component';
+import { VinylCreateComponent } from './admin-vinyl-create/admin-vinyl-create.component';
+import { VinylUpdateComponent } from './admin-vinyl-update/admin-vinyl-update.component';
+import { VinylDeleteComponent } from './admin-vinyl-delete/admin-vinyl-delete.component';
+import { VinylViewComponent } from './admin-vinyl-view/admin-vinyl-view.component';
+import { GetUserOrdersComponent } from './admin-get-customer-orders/admin-get-customer-orders.component';
 
 const routes: Routes = [
   { path: 'addUser', component: AddUserComponent },
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'getVinyls', component: GetVinylsComponent, canActivate:[AuthGuardService] },
   { path: 'deleteUser', component: DeleteUserComponent, canActivate:[AuthGuardService] },
   { path: 'addManager', component: AddManagerComponent, canActivate:[AuthManagerService] },
-  { path: 'verifyUser', component: VerifyUserComponent, canActivate:[AuthGuardService] },
   { path: 'getCart', component: GetCartComponent, canActivate:[AuthGuardService] },
   { path: 'getUserOrders', component: UserOrdersComponent, canActivate:[AuthGuardService] },
   { path: 'getCustomers', component: CustomersComponent, canActivate:[AuthManagerService] },

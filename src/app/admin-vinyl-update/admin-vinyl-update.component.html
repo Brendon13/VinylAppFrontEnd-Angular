@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vinyl Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">	
+    <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('assets/images/bg-01.jpg');">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-41">
+                    Add Manager
+                </span>
+                <form [formGroup]="updateVinylForm" (ngSubmit)="onSubmit()" class="login100-form validate-form p-b-33 p-t-5">
+
+                    <div class="wrap-input100 form-group">
+                        <input class="input100 form-control" type="text" placeholder="Description" formControlName="description" value={{retrievedVinyl.description}} [ngClass]="{ 'is-invalid': submitted && formControls.description.errors }">
+                        <span class="focus-input100" data-placeholder="&#xe82a;">
+                            <label>Description</label>
+                        </span>
+                        <span *ngIf="submitted && formControls.description.errors" class="invalid-feedback">
+                          <span *ngIf="formControls.description.errors.required">Description is required</span>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input form-group">
+                        <input class="input100 form-control" type="text" placeholder="Name" formControlName="name" value={{retrievedVinyl.name}} [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }">
+                        <span class="focus-input100" data-placeholder="&#xe82a;">
+                            <label>Name</label>
+                        </span>
+                        <span *ngIf="submitted && formControls.name.errors" class="invalid-feedback">
+                          <span *ngIf="formControls.name.errors.required">Name is required</span>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input form-group">
+                      <input class="input100 form-control" type="number" placeholder="Price" formControlName="price" value={{retrievedVinyl.price}} [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+                      <span class="focus-input100" data-placeholder="&#xe82a;">
+                        <label>Price</label>
+                      </span>
+                      <span *ngIf="submitted && formControls.price.errors" class="invalid-feedback">
+                        <span *ngIf="formControls.price.errors.required">Price is required</span>
+                      </span>
+                  </div>
+
+                  <div class="wrap-input100 validate-input form-group">
+                      <input class="input100 form-control" type="text" placeholder="Quantity" formControlName="quantity" value={{retrievedVinyl.quantity}} [ngClass]="{ 'is-invalid': submitted && formControls.quantity.errors }">
+                      <span class="focus-input100" data-placeholder="&#xe80f;">
+                        <label>Quantity</label>
+                      </span>
+                      <span *ngIf="submitted && formControls.quantity.errors" class="invalid-feedback">
+                          <span *ngIf="formControls.quantity.errors.required">Quantity is required</span>
+                          <span *ngIf="formControls.quantity.errors.pattern">Quantity is not a valid number</span>
+                      </span>
+                  </div>
+
+                    <div class="container-login100-form-btn m-t-32 form-group">
+                        <button class="login100-form-btn">
+                            Update Vinyl
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets/vendor/animsition/js/animsition.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/popper.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/select2/select2.min.js"></script>
+    <script src="assets/vendor/daterangepicker/moment.min.js"></script>
+    <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="assets/vendor/countdowntime/countdowntime.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,33 +1,30 @@
 <header>
-    <nav class ="navbar navbar-expand-md navbar-dark" style="background-color: #4d0000">
+  <nav class ="navbar navbar-expand-md navbar-dark" style="background-color: #4d0000">
     <span class="navbar-brand mb-0 h1">VinylStore</span>
-    
-    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/addManager">Add Manager</a></li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loginService.isUserManager()">
-          Edit Vinyls
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylView">View and Update</a>
-          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylCreate">Create</a>
-          <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylDelete">Delete</a>
-        </div>
-      </li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getVinyls">Vinyls</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">Edit Customers Orders</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getCart">Cart</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getUserOrders">Orders</a></li>
-    </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/addManager">Add Manager</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loginService.isUserManager()">
+            Edit Vinyls
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylView">View and Update</a>
+            <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylCreate">Create</a>
+            <a class="dropdown-item" *ngIf="loginService.isUserManager()" routerLink="/vinylDelete">Delete</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserManager()" routerLink="/getCustomers">Edit Customers Orders</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getVinyls">Vinyls</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getCart">Cart</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/getUserOrders">Orders</a></li>
+      </ul>
 
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/deleteUser">Delete User</a></li>
-      <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">Log Out</a></li>
-    </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserCustomer()" routerLink="/deleteUser">Delete User</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">Log Out</a></li>
+      </ul>
     </div>
-    </nav>
-    
+  </nav>    
 </header>

@@ -44,14 +44,6 @@ export class StatusDTO{
   ){}
 }
 
-export class Cart{
-  constructor(
-    public NumberOfItems:number,
-    public ItemsInCart:ItemWithOutId[],
-    public TotalCost:number 
-  ){}
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -143,7 +135,8 @@ export class HttpClientService {
        alert('Quantity must be integer value!');
     }
     else 
-    alert(errorMessage);
+      alert(errorMessage);
+      
     return throwError(error);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
+import { VerifyUserRoleService } from '../service/verify-user-role.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   password = '';
   invalidLogin = false;
 
-  constructor(private router: Router, private loginService: AuthenticationService) { }
+  constructor(private router: Router, private loginService: AuthenticationService, private verifyUserRole: VerifyUserRoleService) { }
 
   ngOnInit() {
   }
@@ -21,14 +22,13 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     (this.loginService.authenticate(this.username, this.password).subscribe(
       data => {
-        this.router.navigate(['/verifyUser']);
+        this.verifyUserRole.checkManager();
         this.invalidLogin = false;
       },
       error => {
         this.invalidLogin = true;
       }
-    )
-    );
+    ));
   }
 
 }
