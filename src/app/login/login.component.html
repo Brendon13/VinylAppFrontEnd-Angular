@@ -5,16 +5,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 </head>
 <body>
 	
@@ -24,28 +24,35 @@
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5">
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="email" name="username" [(ngModel)]="username" placeholder="Email Address">
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login100-form validate-form p-b-33 p-t-5">
+
+					<div class="wrap-input100 form-group">
+						<input class="input100 form-control" type="text" placeholder="Email Address" formControlName="username" [ngClass]="{ 'is-invalid': submitted && formControls.username.errors }">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						<span *ngIf="submitted && formControls.username.errors" class="invalid-feedback">
+						  <span *ngIf="formControls.username.errors.required">Email Address is required</span>
+						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" [(ngModel)]="password" placeholder="Password">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					<div class="wrap-input100 form-group">
+						<input class="input100 form-control" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						<span *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+						  <span *ngIf="formControls.password.errors.required">Password is required</span>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32 form-group">
+						<button class="login100-form-btn">
+							Login
+						</button>
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
-						<button (click)=checkLogin() class="login100-form-btn">
-							Login
-						</button>
-        			</div>
-          
-        		<div class="container-login100-form-btn m-t-32">
-					<p>Not a member?
-              			<a style="color: #0004ff" *ngIf="!loginService.isUserLoggedIn()" routerLink="/addUser">Register</a>
-            		</p>
-				</div>
+					  <p>Not a member?
+					  <a style="color: #0004ff" routerLink="/addUser">Register</a>
+					  </p>
+				  </div>
 
 				</form>
 			</div>

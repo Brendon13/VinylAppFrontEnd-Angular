@@ -38,7 +38,7 @@ export class VinylCreateComponent implements OnInit {
     this.httpClientService.addVinyl(this.vinyl)
         .subscribe( data => {
           alert("Vinyl created successfully.");
-          this.router.navigate(['/getVinyls']);
+          this.router.navigate(['/vinylView']);
         }); 
   };
 

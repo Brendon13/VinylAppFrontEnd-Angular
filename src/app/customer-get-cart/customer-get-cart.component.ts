@@ -38,8 +38,8 @@ export class GetCartComponent implements OnInit, OnDestroy {
       for(var i=0; i< this.data.length; i++)
       {
       this.numberOfItems++;
-      this.totalQuantity += this.data[i].Quantity;
-      this.totalPrice += this.data[i].Price * this.data[i].Quantity;
+      this.totalQuantity += this.data[i].quantity;
+      this.totalPrice += this.data[i].price * this.data[i].quantity;
       }
       this.showTable();
       this.dtTrigger.next();

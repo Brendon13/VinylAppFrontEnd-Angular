@@ -9,7 +9,7 @@ import { HttpClientService } from '../service/httpclient.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService:AuthenticationService, private httpClientService: HttpClientService ) { }
+  constructor(public loginService:AuthenticationService, private httpClientService: HttpClientService ) { }
 
   ngOnInit() {
     

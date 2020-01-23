@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">	
-    <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/select2/select2.min.css">	
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 </head>
 <body>
     <div class="limiter">
@@ -35,7 +35,7 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input form-group">
+                    <div class="wrap-input100 form-group">
                         <input class="input100 form-control" type="text" placeholder="Name" formControlName="name" value={{retrievedVinyl.name}} [ngClass]="{ 'is-invalid': submitted && formControls.name.errors }">
                         <span class="focus-input100" data-placeholder="&#xe82a;">
                             <label>Name</label>
@@ -45,7 +45,7 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input form-group">
+                    <div class="wrap-input100 form-group">
                       <input class="input100 form-control" type="number" placeholder="Price" formControlName="price" value={{retrievedVinyl.price}} [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
                       <span class="focus-input100" data-placeholder="&#xe82a;">
                         <label>Price</label>
@@ -55,9 +55,9 @@
                       </span>
                   </div>
 
-                  <div class="wrap-input100 validate-input form-group">
+                  <div class="wrap-input100 form-group">
                       <input class="input100 form-control" type="text" placeholder="Quantity" formControlName="quantity" value={{retrievedVinyl.quantity}} [ngClass]="{ 'is-invalid': submitted && formControls.quantity.errors }">
-                      <span class="focus-input100" data-placeholder="&#xe80f;">
+                      <span class="focus-input100" data-placeholder="&#xe82a;">
                         <label>Quantity</label>
                       </span>
                       <span *ngIf="submitted && formControls.quantity.errors" class="invalid-feedback">

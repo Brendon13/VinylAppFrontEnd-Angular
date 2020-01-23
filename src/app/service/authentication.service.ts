@@ -45,11 +45,7 @@ export class AuthenticationService {
 
   handleError(error: HttpErrorResponse)
   {
-    let splitted = JSON.stringify(error.error).split(":");
-    let splitted2 = splitted[splitted.length-1];
-    let errorMessage = splitted2.substr(1, splitted2.length-3);
-    console.log(errorMessage);
-    alert(errorMessage);
+    alert(error.error.message);
     return throwError(error);
   }
   
@@ -61,14 +57,14 @@ export class AuthenticationService {
   isUserManager(){
     if(this.isUserLoggedIn()){
       let userRole = sessionStorage.getItem('role');
-      return (userRole.match('true'));
+      return (userRole.match('1'));
     }
   }
 
   isUserCustomer(){
     if(this.isUserLoggedIn()){
       let userRole = sessionStorage.getItem('role');
-      return (userRole.match('false'));
+      return (userRole.match('0'));
     }
   }
 

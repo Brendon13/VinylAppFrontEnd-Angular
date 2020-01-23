@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { ItemWithOutId, HttpClientService } from '../service/httpclient.service';
 import { Router } from '@angular/router';
 
@@ -39,6 +39,13 @@ export class VinylUpdateComponent implements OnInit {
       quantity: [this.retrievedVinyl.quantity, [Validators.required, Validators.pattern(this.quantityPattern)]]});
 
     });
+
+    this.updateVinylForm = this.formBuilder.group({
+      description: ['', Validators.required],
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+      quantity: ['', [Validators.required, Validators.pattern(this.quantityPattern)]]});
+
   }
 
    updateVinyl(): void {
