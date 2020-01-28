@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ItemWithOutId, HttpClientService } from '../service/httpclient.service';
 import { Router } from '@angular/router';
 
@@ -27,10 +27,10 @@ export class VinylUpdateComponent implements OnInit {
   ngOnInit() {
     this.httpClientService.getVinyl(this.ItemId).subscribe( response => {
     this.data=response;
-    this.retrievedVinyl.description = this.data.Description;
-    this.retrievedVinyl.name = this.data.Name;
-    this.retrievedVinyl.price = this.data.Price;
-    this.retrievedVinyl.quantity = this.data.Quantity;
+    this.retrievedVinyl.description = this.data.description;
+    this.retrievedVinyl.name = this.data.name;
+    this.retrievedVinyl.price = this.data.price;
+    this.retrievedVinyl.quantity = this.data.quantity;
 
     this.updateVinylForm = this.formBuilder.group({
       description: [this.retrievedVinyl.description, Validators.required],

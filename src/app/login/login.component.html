@@ -27,16 +27,17 @@
 				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login100-form validate-form p-b-33 p-t-5">
 
 					<div class="wrap-input100 form-group">
-						<input class="input100 form-control" type="text" placeholder="Email Address" formControlName="username" [ngClass]="{ 'is-invalid': submitted && formControls.username.errors }">
+						<input class="input100 form-control" type="email" placeholder="Email Address" formControlName="username" [ngClass]="{ 'is-invalid': submitted && formControls.username.errors }">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 						<span *ngIf="submitted && formControls.username.errors" class="invalid-feedback">
 						  <span *ngIf="formControls.username.errors.required">Email Address is required</span>
+						  <span *ngIf="formControls.username.errors.email">Email must be a valid email address</span>
 						</span>
 					</div>
 
 					<div class="wrap-input100 form-group">
 						<input class="input100 form-control" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }">
-						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 						<span *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
 						  <span *ngIf="formControls.password.errors.required">Password is required</span>
 						</span>
