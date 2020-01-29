@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class GetUserOrdersComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<unknown> = new Subject();
+  show: boolean = false;
 
   userId:any;
   data:any;
@@ -30,6 +31,7 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.httpClientService.getOrder(this.userId).subscribe( response => {
       this.data=response;
+      this.showTable();
       this.dtTrigger.next();
     });
 
@@ -65,4 +67,10 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
       this.updateOrder();     
   }
 
+  showTable() {
+    this.show=true;
+    setTimeout(() => {
+      this.dtTrigger.next();
+    });
+}
 }
