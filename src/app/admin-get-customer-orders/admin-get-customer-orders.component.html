@@ -46,12 +46,20 @@
                             <td>
                                 <form [formGroup]="updateOrderForm" (ngSubmit)="onSubmit(Orders.id)">
                                     <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select formControlName="status"> 
+                                        <option *ngFor="let stat of status; let i = index" [value]="status[i].id">
+                                        {{status[i].name}}
+                                        </option>
+                                    </select>
+                                    </div>
+                                    <!-- <div class="form-group">
                                         <label>Status ID</label>
                                         <input type="number" formControlName="statusId" class="form-control" [ngClass]="{ 'is-invalid': submitted && formControls.statusId.errors }" />
                                         <div *ngIf="submitted && formControls.statusId.errors" class="invalid-feedback">
                                             <div *ngIf="formControls.statusId.errors.required">Status ID is required</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <button class="btn btn-primary">Update Order</button>
                                     </div>

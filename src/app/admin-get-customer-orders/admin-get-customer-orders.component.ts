@@ -14,6 +14,8 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<unknown> = new Subject();
   show: boolean = false;
 
+  status = [];
+
   userId:any;
   data:any;
 
@@ -36,7 +38,16 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
     });
 
     this.updateOrderForm = this.formBuilder.group({
-      statusId: ['', [Validators.required]]});
+      status: ['', [Validators.required]]});
+      
+    this.status = this.getStatus();
+  }
+
+  getStatus() {
+    return [
+      { id: '1', name: 'Active' },
+      { id: '2', name: 'Delivered' }
+    ];
   }
 
   ngOnDestroy(): void {
@@ -44,7 +55,7 @@ export class GetUserOrdersComponent implements OnInit, OnDestroy {
   }
 
   updateOrder(): void {
-    this.statusDTO.id = this.updateOrderForm.controls['statusId'].value;
+    this.statusDTO.id = this.updateOrderForm.controls['status'].value;
     this.httpClientService.updateOrder(this.orderId, this.statusDTO).subscribe( data => {
       alert("Order updated successfully.");
       this.router.navigate(['/getCustomers']);
