@@ -46,10 +46,10 @@
                             <td>
                                 <form [formGroup]="updateOrderForm" (ngSubmit)="onSubmit(Orders.id)">
                                     <div class="form-group">
-                                    <label for="status">Status</label>
+                                    <label>Status</label>
                                     <select formControlName="status"> 
-                                        <option *ngFor="let stat of status; let i = index" [value]="status[i].id">
-                                        {{status[i].name}}
+                                        <option *ngFor="let stat of status" [value]="stat.id">
+                                        {{stat.name}}
                                         </option>
                                     </select>
                                     </div>
