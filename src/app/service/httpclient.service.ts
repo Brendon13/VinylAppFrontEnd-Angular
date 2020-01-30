@@ -52,7 +52,7 @@ export class HttpClientService {
   constructor(private httpClient:HttpClient) { }
 
   public createUser(user){
-    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users' , user).pipe(catchError(this.handleError));
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users/customer' , user).pipe(catchError(this.handleError));
   }
 
   public getVinyls(){
@@ -64,31 +64,31 @@ export class HttpClientService {
   }
 
   public createManager(user){
-    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/managers' , user).pipe(catchError(this.handleError));
+    return this.httpClient.post<User>('http://localhost:8080/VinylStore/api/users/manager' , user).pipe(catchError(this.handleError));
   }
 
   public addToCart(itemId, cartItemDTO){
-    return this.httpClient.post<CartItemDTO>('http://localhost:8080/VinylStore/api/vinyls/cart/' + itemId, cartItemDTO).pipe(catchError(this.handleError));
+    return this.httpClient.post<CartItemDTO>('http://localhost:8080/VinylStore/api/cart/customer/' + itemId, cartItemDTO).pipe(catchError(this.handleError));
   }
 
   public getCart(){
-    return this.httpClient.get('http://localhost:8080/VinylStore/api/customer/cart/detail').pipe(catchError(this.handleError));
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/cart/customer/detail').pipe(catchError(this.handleError));
   }
 
   public deleteItem(itemId){
-    return this.httpClient.delete('http://localhost:8080/VinylStore/api/users/cart/' + itemId).pipe(catchError(this.handleError));
+    return this.httpClient.delete('http://localhost:8080/VinylStore/api/cart/customer/' + itemId).pipe(catchError(this.handleError));
   }
 
   public placeOrder(){
-    return this.httpClient.put('http://localhost:8080/VinylStore/api/orders', null).pipe(catchError(this.handleError));
+    return this.httpClient.post('http://localhost:8080/VinylStore/api/orders', null).pipe(catchError(this.handleError));
   }
 
   public getUserOrder(){
-    return this.httpClient.get('http://localhost:8080/VinylStore/api/users/orders').pipe(catchError(this.handleError));
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/orders/user').pipe(catchError(this.handleError));
   }
 
   public addVinyl(vinyl){
-    return this.httpClient.post<Item>('http://localhost:8080/VinylStore/api/vinylsAdd', vinyl).pipe(catchError(this.handleError));
+    return this.httpClient.post<Item>('http://localhost:8080/VinylStore/api/vinyls/add', vinyl).pipe(catchError(this.handleError));
   }
 
   public deleteVinyl(itemId){
@@ -96,11 +96,11 @@ export class HttpClientService {
   }
 
   public updateVinyl(itemId, vinyl){
-    return this.httpClient.put('http://localhost:8080/VinylStore/api/vinyls/update/' + itemId, vinyl).pipe(catchError(this.handleError));
+    return this.httpClient.put('http://localhost:8080/VinylStore/api/vinyls/' + itemId, vinyl).pipe(catchError(this.handleError));
   }
 
   public getCustomers(){
-    return this.httpClient.get('http://localhost:8080/VinylStore/api/customers').pipe(catchError(this.handleError));
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/users/customers').pipe(catchError(this.handleError));
   }
 
   public updateOrder(orderId, status){
@@ -108,7 +108,7 @@ export class HttpClientService {
   }
 
   public getOrder(userId){
-    return this.httpClient.get('http://localhost:8080/VinylStore/api/users/' + userId + '/orders').pipe(catchError(this.handleError));
+    return this.httpClient.get('http://localhost:8080/VinylStore/api/orders/' + userId).pipe(catchError(this.handleError));
   }
 
   public getVinyl(vinylId){

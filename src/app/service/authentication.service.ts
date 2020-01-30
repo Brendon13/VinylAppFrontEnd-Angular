@@ -32,7 +32,7 @@ export class AuthenticationService {
     }
 
   verifyUser(){
-    return this.httpClient.get<any>('http://localhost:8080/VinylStore/api/verifyManager').pipe(
+    return this.httpClient.get<any>('http://localhost:8080/VinylStore/api/users/role').pipe(
       map(
         userData => {
           let userRole = userData.role;
