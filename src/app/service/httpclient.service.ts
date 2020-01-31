@@ -88,7 +88,7 @@ export class HttpClientService {
   }
 
   public addVinyl(vinyl){
-    return this.httpClient.post<Item>('http://localhost:8080/VinylStore/api/vinyls/add', vinyl).pipe(catchError(this.handleError));
+    return this.httpClient.post<Item>('http://localhost:8080/VinylStore/api/vinyls', vinyl).pipe(catchError(this.handleError));
   }
 
   public deleteVinyl(itemId){
